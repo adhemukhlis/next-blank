@@ -1,45 +1,44 @@
-import js from '@eslint/js'
+import jsEslint from '@eslint/js'
 import next from '@next/eslint-plugin-next'
-import react from 'eslint-plugin-react'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+import pluginImport from 'eslint-plugin-import-x'
 import globals from 'globals'
-import nextVitals from 'eslint-config-next/core-web-vitals'
 import stylistic from '@stylistic/eslint-plugin'
+import eslintReact from '@eslint-react/eslint-plugin'
+import tsEslint from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
 
-const eslintConfig = [
-	...nextVitals,
+const eslintConfig = defineConfig([
 	{
 		ignores: ['**/node_modules/**', '**/.next/**', '**/.git/**', '**/.vscode/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts']
 	},
+
 	{
 		files: ['**/*.{ts,tsx}'],
-		ignores: ['src/app/sw.ts'],
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
-			parser: tsparser,
+			parser: tsEslint.parser,
 			parserOptions: {
-				project: './tsconfig.json'
+				project: './tsconfig.json',
+				tsconfigRootDir: import.meta.dirname
 			},
 			globals: {
-				...globals.browser,
-				...globals.node
+				...globals.node,
+				...globals.browser
 			}
 		},
 		plugins: {
-			'@typescript-eslint': tseslint,
-			'@stylistic': stylistic
+			import: pluginImport,
+			'@stylistic': stylistic,
+			'@next/next': next
 		},
+		extends: [jsEslint.configs.recommended, tsEslint.configs.recommended, eslintReact.configs['strict-typescript']],
 		rules: {
-			...js.configs.recommended.rules,
-			...react.configs.recommended.rules,
 			...next.configs.recommended.rules,
-			...tseslint.configs.recommended.rules,
+			...next.configs['core-web-vitals'].rules,
 			'@typescript-eslint/no-base-to-string': 'error',
 			'@typescript-eslint/require-await': 'error',
 			'@typescript-eslint/unbound-method': 'error',
-			'react/react-in-jsx-scope': 'off',
 			'no-template-curly-in-string': 'off',
 			'no-misleading-character-class': 'off',
 			'no-unsafe-optional-chaining': 'off',
@@ -47,16 +46,14 @@ const eslintConfig = [
 			'no-mixed-spaces-and-tabs': 'off',
 			'no-unused-vars': 'off',
 			'no-dupe-keys': 'error',
-			'react/prop-types': 'off',
-			'react/jsx-key': 'error',
 			'no-console': ['warn', { allow: ['warn', 'error', 'info', 'table'] }],
-			'react/display-name': 'off',
 			'no-extra-boolean-cast': 'off',
-			'react-hooks/purity': 'off',
-			'react-hooks/exhaustive-deps': 'off',
-			'react-hooks/rules-of-hooks': 'off',
-			'react-hooks/use-memo': 'off',
-			'react-hooks/set-state-in-effect': 'off',
+			'@eslint-react/no-missing-key': 'error',
+			'@eslint-react/no-missing-component-display-name': 'off',
+			'@eslint-react/jsx-no-useless-fragment': 'off',
+			'@eslint-react/no-array-index-key': 'off',
+			'@eslint-react/no-clone-element': 'off',
+			'@eslint-react/dom-no-dangerously-set-innerhtml': 'off',
 			'prefer-const': 'warn',
 			'no-control-regex': 'off',
 			'@stylistic/padding-line-between-statements': [
@@ -141,41 +138,13 @@ const eslintConfig = [
 			'import/no-namespace': 'error'
 		},
 		settings: {
-			react: {
-				version: 'detect'
-			},
 			'import/resolver': {
 				typescript: {
 					project: './tsconfig.json'
 				}
 			}
 		}
-	},
-	{
-		files: ['src/app/sw.ts'],
-		languageOptions: {
-			parser: tsparser,
-			parserOptions: {
-				project: './tsconfig.worker.json'
-			},
-			globals: {
-				...globals.serviceWorker
-			}
-		},
-		plugins: {
-			'@typescript-eslint': tseslint
-		},
-		rules: {
-			...tseslint.configs.recommended.rules,
-			'no-restricted-globals': 'off'
-		},
-		settings: {
-			'import/resolver': {
-				typescript: {
-					project: './tsconfig.worker.json'
-				}
-			}
-		}
 	}
-]
+])
+
 export default eslintConfig
