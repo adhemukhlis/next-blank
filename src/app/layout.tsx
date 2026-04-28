@@ -1,7 +1,8 @@
 import { Rubik } from 'next/font/google'
 
 import type { Metadata, Viewport } from 'next'
-import type { FC, PropsWithChildren } from 'react'
+import type { FC } from 'react'
+import type { PropsExtendChildren } from '@/types/common'
 
 import '@/styles/global.css'
 
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
 	themeColor: '#FAFAFA'
 }
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+const RootLayout: FC<PropsExtendChildren> = ({ children }) => {
 	return (
 		<html lang="en">
 			<body className={`${nextFont.variable}`}>{children}</body>
