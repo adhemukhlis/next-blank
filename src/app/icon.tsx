@@ -6,7 +6,7 @@ export const runtime = 'edge'
 
 export const size = {
 	width: 36,
-	height: 36
+	height: 36,
 }
 
 const iconStyle: CSSProperties = {
@@ -17,14 +17,14 @@ const iconStyle: CSSProperties = {
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
-	color: 'white'
+	color: 'white',
 }
 
 export const contentType = 'image/png'
 
 const Icon = () => {
 	return new ImageResponse(<div style={iconStyle}>B</div>, {
-		...size
+		...size,
 	})
 }
 

@@ -4,10 +4,6 @@ dedupePeerDependents: true
 
 engineStrict: true
 
-onlyBuiltDependencies:
- - sharp
- - unrs-resolver
-
 packageImportMethod: hardlink
 
 preferFrozenLockfile: true
@@ -16,7 +12,11 @@ sideEffectsCache: true
 
 storeDir: ~/.pnpm-store
 
-updateConfig:
- ignoreDependencies:
-  - eslint
-  - '@eslint/js'
+# updateConfig:
+#   ignoreDependencies:
+#     - eslint
+#     - '@eslint/js'
+
+allowBuilds:
+ sharp: true
+ unrs-resolver: true

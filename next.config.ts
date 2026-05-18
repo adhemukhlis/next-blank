@@ -5,11 +5,11 @@ const nextConfig: NextConfig = {
 		...(process.env.NODE_ENV === 'production'
 			? {
 					removeConsole: {
-						exclude: ['error', 'warn', 'info', 'table']
-					}
+						exclude: ['error', 'warn', 'info', 'table'],
+					},
+					reactRemoveProperties: { properties: ['^data-testid$'] },
 				}
 			: {}),
-		...(process.env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] } } : {})
 	},
 	output: 'standalone',
 	cacheComponents: true,
@@ -17,15 +17,24 @@ const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	typescript: {
 		ignoreBuildErrors: true,
-		tsconfigPath: 'tsconfig.json'
+		tsconfigPath: 'tsconfig.json',
 	},
 	reactStrictMode: false, // I prefer to set to false to prevent double rendering.
 	productionBrowserSourceMaps: false,
 	trailingSlash: false,
 	turbopack: {
-		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json']
+		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
 	},
-	typedRoutes: true
+	typedRoutes: true,
+	// images: {
+	// 	remotePatterns: [
+	// 		{
+	// 			protocol: 'https',
+	// 			hostname: 'api.dicebear.com',
+	// 		},
+	// 	],
+	// 	dangerouslyAllowSVG: true,
+	// },
 }
 
 export default nextConfig

@@ -21,7 +21,7 @@ const mode = process.argv[2] || 'dev'
 const commands = {
 	dev: `next dev -p ${port}`,
 	'dev-https': `next dev -p ${port} --experimental-https`,
-	start: `next start -p ${port}`
+	start: `next start -p ${port}`,
 }
 
 if (!commands[mode]) {
@@ -34,5 +34,5 @@ console.info(`🚀 Running: ${commands[mode]}`)
 
 execSync(commands[mode], {
 	stdio: 'inherit',
-	env: { ...process.env, ...vars }
+	env: { ...process.env, ...vars },
 })
