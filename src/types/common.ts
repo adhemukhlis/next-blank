@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-export interface PropsExtendChildren<P = {}> {
+export type PropsExtendChildren<P = object> = P & {
 	children?: ReactNode
 }

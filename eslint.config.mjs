@@ -9,9 +9,8 @@ import { defineConfig } from 'eslint/config'
 
 const eslintConfig = defineConfig([
 	{
-		ignores: ['**/node_modules/**', '**/.next/**', '**/.git/**', '**/.vscode/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts']
+		ignores: ['**/node_modules/**', '**/.next/**', '**/.git/**', '**/.vscode/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
 	},
-
 	{
 		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
@@ -20,17 +19,17 @@ const eslintConfig = defineConfig([
 			parser: tsEslint.parser,
 			parserOptions: {
 				project: './tsconfig.json',
-				tsconfigRootDir: import.meta.dirname
+				tsconfigRootDir: import.meta.dirname,
 			},
 			globals: {
 				...globals.node,
-				...globals.browser
-			}
+				...globals.browser,
+			},
 		},
 		plugins: {
 			import: pluginImport,
 			'@stylistic': stylistic,
-			'@next/next': next
+			'@next/next': next,
 		},
 		extends: [jsEslint.configs.recommended, tsEslint.configs.recommended, eslintReact.configs['strict-typescript']],
 		rules: {
@@ -72,7 +71,7 @@ const eslintConfig = defineConfig([
 				{ blankLine: 'any', prev: 'import', next: 'import' },
 				{ blankLine: 'always', prev: '*', next: 'export' },
 				{ blankLine: 'always', prev: '*', next: ['interface', 'type', 'return'] },
-				{ blankLine: 'always', prev: ['interface', 'type'], next: '*' }
+				{ blankLine: 'always', prev: ['interface', 'type'], next: '*' },
 			],
 			'@stylistic/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 			'@stylistic/jsx-child-element-spacing': 'error',
@@ -92,8 +91,8 @@ const eslintConfig = defineConfig([
 					caughtErrorsIgnorePattern: '^_',
 					destructuredArrayIgnorePattern: '^_',
 					varsIgnorePattern: '^_',
-					ignoreRestSiblings: true
-				}
+					ignoreRestSiblings: true,
+				},
 			],
 			'sort-imports': [
 				'error',
@@ -101,8 +100,8 @@ const eslintConfig = defineConfig([
 					ignoreCase: true,
 					ignoreDeclarationSort: true,
 					ignoreMemberSort: false,
-					allowSeparatedGroups: false
-				}
+					allowSeparatedGroups: false,
+				},
 			],
 			'import/order': [
 				'error',
@@ -113,38 +112,38 @@ const eslintConfig = defineConfig([
 					pathGroups: [
 						{
 							pattern: '@/**',
-							group: 'internal'
-						}
+							group: 'internal',
+						},
 					],
-					pathGroupsExcludedImportTypes: ['type']
-				}
+					pathGroupsExcludedImportTypes: ['type'],
+				},
 			],
 			'no-restricted-syntax': [
 				'error',
 				{
 					selector: `JSXElement[openingElement.name.name='pre'] > JSXExpressionContainer > CallExpression[callee.object.name='JSON'][callee.property.name='stringify'][arguments.length>=3]`,
-					message: `Don't leave JSON.stringify inside <pre> in production code.`
-				}
+					message: `Don't leave JSON.stringify inside <pre> in production code.`,
+				},
 			],
 			'@typescript-eslint/consistent-type-imports': [
 				'error',
 				{
 					prefer: 'type-imports',
-					fixStyle: 'separate-type-imports'
-				}
+					fixStyle: 'separate-type-imports',
+				},
 			],
 			'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 			'import/no-duplicates': ['error', { 'prefer-inline': false }],
-			'import/no-namespace': 'error'
+			'import/no-namespace': 'error',
 		},
 		settings: {
 			'import/resolver': {
 				typescript: {
-					project: './tsconfig.json'
-				}
-			}
-		}
-	}
+					project: './tsconfig.json',
+				},
+			},
+		},
+	},
 ])
 
 export default eslintConfig

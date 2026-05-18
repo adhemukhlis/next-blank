@@ -1,8 +1,8 @@
 import { Rubik } from 'next/font/google'
 
+import type { PropsExtendChildren } from '@/types/common'
 import type { Metadata, Viewport } from 'next'
 import type { FC } from 'react'
-import type { PropsExtendChildren } from '@/types/common'
 
 import '@/styles/global.css'
 
@@ -12,16 +12,22 @@ const nextFont = Rubik({
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-family',
-	adjustFontFallback: false
+	adjustFontFallback: false,
 })
 
 export const metadata: Metadata = {
 	title: 'next-blank',
-	description: 'Next.js blank'
+	description: 'Next.js Blank',
 }
 
 export const viewport: Viewport = {
-	themeColor: '#FAFAFA'
+	themeColor: '#FAFAFA',
+	colorScheme: 'light',
+	viewportFit: 'contain',
+	userScalable: false,
+	initialScale: 1,
+	maximumScale: 1,
+	minimumScale: 1,
 }
 
 const RootLayout: FC<PropsExtendChildren> = ({ children }) => {
