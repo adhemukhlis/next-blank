@@ -1,4 +1,6 @@
-const NotFound = () => {
+import type { FC } from 'react'
+
+const NotFound: FC = () => {
 	return (
 		<div className="page column justify-center align-center">
 			<h2>Not Found</h2>
