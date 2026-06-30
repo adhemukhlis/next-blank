@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react'
 
-const GlobalErrorPage = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
+import type { FC } from 'react'
+
+type GlobalErrorPageProps = { error: Error & { digest?: string }; reset: () => void }
+
+const GlobalErrorPage: FC<GlobalErrorPageProps> = ({ error, reset }) => {
 	useEffect(() => {
 		console.error(error)
 	}, [error])
@@ -12,8 +16,8 @@ const GlobalErrorPage = ({ error, reset }: { error: Error & { digest?: string };
 			<h2>Sorry, something went wrong on our end 🥹</h2>
 			<pre>{error.message || 'An unexpected error occurred.'}</pre>
 			<button
-				type="button"
-				onClick={() => reset()}>
+				onClick={() => reset()}
+				type="button">
 				Try again
 			</button>
 		</div>

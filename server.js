@@ -18,11 +18,7 @@ const port = vars.PORT || 3000
 
 const mode = process.argv[2] || 'dev'
 
-const commands = {
-	dev: `next dev -p ${port}`,
-	'dev-https': `next dev -p ${port} --experimental-https`,
-	start: `next start -p ${port}`,
-}
+const commands = { dev: `next dev -p ${port}`, 'dev-https': `next dev -p ${port} --experimental-https`, start: `next start -p ${port}` }
 
 if (!commands[mode]) {
 	console.error(`❌ Unknown mode: "${mode}"`)
@@ -32,7 +28,4 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode]}`)
 
-execSync(commands[mode], {
-	stdio: 'inherit',
-	env: { ...process.env, ...vars },
-})
+execSync(commands[mode], { stdio: 'inherit', env: { ...process.env, ...vars } })

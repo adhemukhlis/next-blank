@@ -1,87 +1,75 @@
-import jsEslint from '@eslint/js'
-import next from '@next/eslint-plugin-next'
-import pluginImport from 'eslint-plugin-import-x'
-import globals from 'globals'
-import stylistic from '@stylistic/eslint-plugin'
 import eslintReact from '@eslint-react/eslint-plugin'
-import tsEslint from 'typescript-eslint'
+import jsEslint from '@eslint/js'
+import cspell from '@cspell/eslint-plugin'
+import stylistic from '@stylistic/eslint-plugin'
+import next from '@next/eslint-plugin-next'
+import perfectionist from 'eslint-plugin-perfectionist'
 import { defineConfig } from 'eslint/config'
+import globals from 'globals'
+import tsEslint from 'typescript-eslint'
 
 const eslintConfig = defineConfig([
-	{
-		ignores: ['**/node_modules/**', '**/.next/**', '**/.git/**', '**/.vscode/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
-	},
+	// ==========================================
+	// 1. GLOBAL IGNORES
+	// ==========================================
+	{ ignores: ['**/node_modules/**', '**/.git/**', '**/.vscode/**'] },
+
+	// ==========================================
+	// 2. UNIVERSAL CONFIGURATION (TS, Style, Formatting, Sorting)
+	// ==========================================
+	// This block contains universal rules that apply to any TypeScript project.
 	{
 		files: ['**/*.{ts,tsx}'],
 		languageOptions: {
 			ecmaVersion: 'latest',
-			sourceType: 'module',
+			globals: { ...globals.node },
 			parser: tsEslint.parser,
-			parserOptions: {
-				project: './tsconfig.json',
-				tsconfigRootDir: import.meta.dirname,
-			},
-			globals: {
-				...globals.node,
-				...globals.browser,
-			},
+			parserOptions: { project: './tsconfig.json', tsconfigRootDir: import.meta.dirname },
+			sourceType: 'module',
 		},
-		plugins: {
-			import: pluginImport,
-			'@stylistic': stylistic,
-			'@next/next': next,
-		},
-		extends: [jsEslint.configs.recommended, tsEslint.configs.recommended, eslintReact.configs['strict-typescript']],
+		plugins: { '@stylistic': stylistic, perfectionist },
+		extends: [jsEslint.configs.recommended, ...tsEslint.configs.recommended],
 		rules: {
-			...next.configs.recommended.rules,
-			...next.configs['core-web-vitals'].rules,
-			'@typescript-eslint/no-base-to-string': 'error',
-			'@typescript-eslint/require-await': 'error',
-			'@typescript-eslint/unbound-method': 'error',
-			'no-template-curly-in-string': 'off',
-			'no-misleading-character-class': 'off',
-			'no-unsafe-optional-chaining': 'off',
-			'no-undef': 'off',
-			'no-mixed-spaces-and-tabs': 'off',
-			'no-unused-vars': 'off',
-			'no-dupe-keys': 'error',
-			'no-console': ['warn', { allow: ['warn', 'error', 'info', 'table'] }],
-			'no-extra-boolean-cast': 'off',
-			'@eslint-react/no-missing-key': 'error',
-			'@eslint-react/no-missing-component-display-name': 'off',
-			'@eslint-react/jsx-no-useless-fragment': 'off',
-			'@eslint-react/no-array-index-key': 'off',
-			'@eslint-react/no-clone-element': 'off',
-			'@eslint-react/dom-no-dangerously-set-innerhtml': 'off',
-			'prefer-const': 'warn',
-			'no-control-regex': 'off',
-			'@stylistic/padding-line-between-statements': [
-				'error',
-				{ blankLine: 'always', prev: '*', next: 'return' },
-				{ blankLine: 'always', prev: 'directive', next: '*' },
-				{ blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-				{ blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
-				{ blankLine: 'always', prev: 'block-like', next: '*' },
-				{ blankLine: 'always', prev: '*', next: 'block-like' },
-				{ blankLine: 'always', prev: ['multiline-const'], next: '*' },
-				{ blankLine: 'always', prev: '*', next: ['multiline-const'] },
-				{ blankLine: 'always', prev: '*', next: ['if', 'for', 'switch', 'try', 'while'] },
-				{ blankLine: 'always', prev: ['if', 'for', 'switch', 'try', 'while'], next: '*' },
-				{ blankLine: 'always', prev: 'import', next: '*' },
-				{ blankLine: 'any', prev: 'import', next: 'import' },
-				{ blankLine: 'always', prev: '*', next: 'export' },
-				{ blankLine: 'always', prev: '*', next: ['interface', 'type', 'return'] },
-				{ blankLine: 'always', prev: ['interface', 'type'], next: '*' },
-			],
-			'@stylistic/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-			'@stylistic/jsx-child-element-spacing': 'error',
-			'@stylistic/jsx-pascal-case': ['error', { allowNamespace: true }],
-			'@stylistic/jsx-self-closing-comp': 'error',
-			'arrow-parens': ['error', 'always'],
-			'no-self-compare': 'error',
-			'no-case-declarations': 'error',
+			// Universal Javascript / ESLint Quality Rules
 			curly: ['error', 'all'],
+			eqeqeq: ['warn', 'always', { null: 'ignore' }],
+			'newline-before-return': 'warn',
+			'no-case-declarations': 'error',
+			'no-console': ['warn', { allow: ['warn', 'error', 'info', 'table'] }],
+			'no-control-regex': 'error',
+			'no-debugger': 'error',
+			'no-dupe-keys': 'error',
+			'no-eval': 'error',
+			'no-extra-boolean-cast': 'warn',
+			'no-implied-eval': 'error',
+			'no-misleading-character-class': 'error',
+			'no-mixed-spaces-and-tabs': 'off',
+			'no-self-compare': 'error',
+			'no-template-curly-in-string': 'warn',
+			'no-undef': 'off',
+			'no-unsafe-optional-chaining': 'error',
+			'no-unused-vars': 'off',
+			'no-useless-rename': 'warn',
+			'no-var': 'error',
+			'object-shorthand': ['warn', 'always'],
+			'prefer-const': 'error',
+			'prefer-template': 'warn',
+
+			// Universal TypeScript Rules
+			'@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+			'@typescript-eslint/consistent-type-exports': ['warn', { fixMixedExportsWithInlineTypeSpecifier: true }],
+			'@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', fixStyle: 'separate-type-imports' }],
+			'@typescript-eslint/explicit-function-return-type': [
+				'warn',
+				{ allowDirectConstAssertionInArrowFunctions: true, allowExpressions: true, allowHigherOrderFunctions: true, allowTypedFunctionExpressions: true },
+			],
+			'@typescript-eslint/no-base-to-string': 'error',
 			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/no-floating-promises': 'error',
+			'@typescript-eslint/no-misused-promises': 'error',
+			'@typescript-eslint/no-non-null-assertion': 'warn',
+			'@typescript-eslint/no-unnecessary-condition': ['warn', { allowConstantLoopConditions: true }],
+			'@typescript-eslint/no-unnecessary-type-assertion': 'warn',
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{
@@ -94,56 +82,158 @@ const eslintConfig = defineConfig([
 					ignoreRestSiblings: true,
 				},
 			],
-			'sort-imports': [
-				'error',
+			'@typescript-eslint/prefer-as-const': 'warn',
+			'@typescript-eslint/prefer-includes': 'warn',
+			'@typescript-eslint/prefer-optional-chain': 'warn',
+			'@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+			'@typescript-eslint/require-await': 'error',
+			'@typescript-eslint/restrict-plus-operands': 'error',
+			'@typescript-eslint/restrict-template-expressions': ['error', { allowAny: false, allowBoolean: true, allowNullish: true, allowNumber: true, allowRegExp: true }],
+			'@typescript-eslint/unbound-method': 'error',
+
+			// Universal Coding Style (Stylistic Plugin)
+			'@stylistic/arrow-parens': ['warn', 'always'],
+			'@stylistic/lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
+			'@stylistic/no-multi-spaces': 'warn',
+			'@stylistic/padding-line-between-statements': [
+				'warn',
+				{ blankLine: 'always', next: 'return', prev: '*' },
+				{ blankLine: 'always', next: '*', prev: 'directive' },
+				{ blankLine: 'always', next: '*', prev: ['const', 'let', 'var'] },
+				{ blankLine: 'any', next: ['const', 'let', 'var'], prev: ['const', 'let', 'var'] },
+				{ blankLine: 'always', next: '*', prev: 'block-like' },
+				{ blankLine: 'always', next: 'block-like', prev: '*' },
+				{ blankLine: 'always', next: '*', prev: ['multiline-const'] },
+				{ blankLine: 'always', next: ['multiline-const'], prev: '*' },
+				{ blankLine: 'always', next: ['if', 'for', 'switch', 'try', 'while'], prev: '*' },
+				{ blankLine: 'always', next: '*', prev: ['if', 'for', 'switch', 'try', 'while'] },
+				{ blankLine: 'always', next: '*', prev: 'import' },
+				{ blankLine: 'any', next: 'import', prev: 'import' },
+				{ blankLine: 'always', next: 'export', prev: '*' },
+				{ blankLine: 'always', next: ['interface', 'type', 'return'], prev: '*' },
+				{ blankLine: 'always', next: '*', prev: ['interface', 'type'] },
+			],
+			'@stylistic/rest-spread-spacing': ['warn', 'never'],
+			'@stylistic/spaced-comment': ['warn', 'always', { markers: ['/'] }],
+			'@stylistic/template-curly-spacing': ['warn', 'never'],
+
+			// Perfectionist Sorting Rules
+			'perfectionist/sort-enums': [
+				'warn',
+				{ fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', sortByValue: 'ifNumericEnum', specialCharacters: 'keep', type: 'alphabetical' },
+			],
+			'perfectionist/sort-exports': ['warn', { fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', specialCharacters: 'keep', type: 'alphabetical' }],
+			'perfectionist/sort-imports': [
+				'warn',
 				{
+					groups: [['builtin', 'external'], ['internal', 'parent', 'sibling', 'index'], 'type', 'unknown'],
 					ignoreCase: true,
-					ignoreDeclarationSort: true,
-					ignoreMemberSort: false,
-					allowSeparatedGroups: false,
+					internalPattern: ['^@/.*'],
+					order: 'asc',
+					type: 'alphabetical',
 				},
 			],
-			'import/order': [
-				'error',
+			'perfectionist/sort-interfaces': [
+				'warn',
+				{ fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', sortBy: 'name', specialCharacters: 'keep', type: 'alphabetical' },
+			],
+			'perfectionist/sort-modules': [
+				'warn',
 				{
-					groups: [['builtin', 'external'], ['internal', 'parent', 'sibling', 'index'], 'type', 'object', 'unknown'],
-					alphabetize: { order: 'asc', caseInsensitive: true },
-					'newlines-between': 'always',
-					pathGroups: [
-						{
-							pattern: '@/**',
-							group: 'internal',
-						},
+					fallbackSort: { type: 'alphabetical' },
+					groups: [
+						'declare-enum',
+						'export-enum',
+						'enum',
+						['declare-interface', 'declare-type'],
+						['export-interface', 'export-type'],
+						['interface', 'type'],
+						'declare-class',
+						'class',
+						'export-class',
+						'declare-function',
+						'export-function',
+						'function',
 					],
-					pathGroupsExcludedImportTypes: ['type'],
+					ignoreCase: true,
+					order: 'asc',
+					specialCharacters: 'keep',
+					type: 'alphabetical',
 				},
 			],
-			'no-restricted-syntax': [
-				'error',
-				{
-					selector: `JSXElement[openingElement.name.name='pre'] > JSXExpressionContainer > CallExpression[callee.object.name='JSON'][callee.property.name='stringify'][arguments.length>=3]`,
-					message: `Don't leave JSON.stringify inside <pre> in production code.`,
-				},
+			'perfectionist/sort-named-exports': [
+				'warn',
+				{ fallbackSort: { type: 'unsorted' }, ignoreAlias: true, ignoreCase: true, order: 'asc', specialCharacters: 'keep', type: 'alphabetical' },
 			],
-			'@typescript-eslint/consistent-type-imports': [
-				'error',
-				{
-					prefer: 'type-imports',
-					fixStyle: 'separate-type-imports',
-				},
+			'perfectionist/sort-named-imports': ['warn', { ignoreCase: true, order: 'asc', type: 'alphabetical' }],
+			'perfectionist/sort-object-types': [
+				'warn',
+				{ fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', sortBy: 'name', specialCharacters: 'keep', type: 'alphabetical' },
 			],
-			'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
-			'import/no-duplicates': ['error', { 'prefer-inline': false }],
-			'import/no-namespace': 'error',
+			'perfectionist/sort-objects': ['warn', { fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', sortBy: 'name', specialCharacters: 'keep', type: 'alphabetical' }],
+			'perfectionist/sort-union-types': ['warn', { fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', specialCharacters: 'keep', type: 'alphabetical' }],
+			'perfectionist/sort-variable-declarations': ['warn', { fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', specialCharacters: 'keep', type: 'alphabetical' }],
 		},
-		settings: {
-			'import/resolver': {
-				typescript: {
-					project: './tsconfig.json',
+		settings: { 'import/resolver': { typescript: { project: './tsconfig.json' } } },
+	},
+
+	// ==========================================
+	// 3. PROJECT-SPECIFIC CONFIGURATION
+	// ==========================================
+	// Stack-specific blocks here. When copying this eslint config to other projects,
+	// simply remove/comment this block and its corresponding import at the top.
+	{ ignores: ['**/.next/**', '.next/**', 'next-env.d.ts'] },
+	{
+		files: ['**/*.{ts,tsx,js,jsx}'],
+		languageOptions: { globals: { ...globals.browser } },
+		plugins: { '@next/next': next, '@stylistic': stylistic, perfectionist },
+		extends: [eslintReact.configs['strict-typescript']],
+		rules: {
+			// Next.js Stack Rules
+			...next.configs.recommended.rules,
+			...next.configs['core-web-vitals'].rules,
+
+			// React Core Quality Rules
+			'@eslint-react/dom-no-dangerously-set-innerhtml': 'warn',
+			'@eslint-react/jsx-no-useless-fragment': 'warn',
+			'@eslint-react/no-array-index-key': 'warn',
+			'@eslint-react/no-clone-element': 'warn',
+			'@eslint-react/no-missing-component-display-name': 'off',
+			'@eslint-react/no-missing-key': 'error',
+
+			// React Stylistic Formatting
+			'@stylistic/jsx-child-element-spacing': 'warn',
+			'@stylistic/jsx-curly-brace-presence': ['warn', { children: 'never', props: 'never' }],
+			'@stylistic/jsx-pascal-case': ['warn', { allowNamespace: true }],
+			'@stylistic/jsx-quotes': ['warn', 'prefer-double'],
+			'@stylistic/jsx-self-closing-comp': 'warn',
+			'perfectionist/sort-jsx-props': ['warn', { fallbackSort: { type: 'unsorted' }, ignoreCase: true, order: 'asc', type: 'alphabetical' }],
+			'perfectionist/sort-classes': [
+				'warn',
+				{
+					fallbackSort: { type: 'alphabetical' },
+					groups: ['static-property', 'property', 'constructor', 'static-method', 'method'],
+					ignoreCase: true,
+					order: 'asc',
+					type: 'alphabetical',
 				},
-			},
+			],
+
+			// Custom rules (e.g., prevent production build stringify inside <pre> tags)
+			'no-restricted-syntax': [
+				'warn',
+				{
+					message: `Don't leave JSON.stringify inside <pre> in production code.`,
+					selector: `JSXElement[openingElement.name.name='pre'] > JSXExpressionContainer > CallExpression[callee.object.name='JSON'][callee.property.name='stringify'][arguments.length>=3]`,
+				},
+			],
 		},
 	},
+
+	// ==========================================
+	// 4. SPELL CHECKER CONFIGURATION
+	// ==========================================
+	{ files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'], plugins: { '@cspell': cspell }, rules: { '@cspell/spellchecker': ['warn', {}] } },
 ])
 
 export default eslintConfig
