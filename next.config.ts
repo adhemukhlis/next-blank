@@ -1,31 +1,19 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+	cacheComponents: true,
 	compiler: {
-		...(process.env.NODE_ENV === 'production'
-			? {
-					removeConsole: {
-						exclude: ['error', 'warn', 'info', 'table'],
-					},
-					reactRemoveProperties: { properties: ['^data-testid$'] },
-				}
-			: {}),
+		...(process.env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] }, removeConsole: { exclude: ['error', 'warn', 'info', 'table'] } } : {}),
 	},
 	output: 'standalone',
-	cacheComponents: true,
 	pageExtensions: ['ts', 'tsx'],
 	poweredByHeader: false,
-	typescript: {
-		ignoreBuildErrors: true,
-		tsconfigPath: 'tsconfig.json',
-	},
-	reactStrictMode: false, // I prefer to set to false to prevent double rendering.
 	productionBrowserSourceMaps: false,
+	reactStrictMode: false, // I prefer to set to false to prevent double rendering.
 	trailingSlash: false,
-	turbopack: {
-		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
-	},
+	turbopack: { resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'] },
 	typedRoutes: true,
+	typescript: { ignoreBuildErrors: true, tsconfigPath: 'tsconfig.json' },
 	// images: {
 	// 	remotePatterns: [
 	// 		{

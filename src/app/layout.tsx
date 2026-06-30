@@ -1,36 +1,25 @@
 import { Rubik } from 'next/font/google'
 
-import type { PropsExtendChildren } from '@/types/common'
+import type { PropsWithChildren } from '@/types/common'
 import type { Metadata, Viewport } from 'next'
 import type { FC } from 'react'
 
 import '@/styles/global.css'
 
 const nextFont = Rubik({
-	style: ['normal', 'italic'],
-	weight: ['300', '400', '500', '600', '700', '800', '900'],
-	subsets: ['latin'],
-	display: 'swap',
-	variable: '--font-family',
 	adjustFontFallback: false,
+	display: 'swap',
+	style: ['normal', 'italic'],
+	subsets: ['latin'],
+	variable: '--font-family',
+	weight: ['300', '400', '500', '600', '700', '800', '900'],
 })
 
-export const metadata: Metadata = {
-	title: 'next-blank',
-	description: 'Next.js Blank',
-}
+export const metadata: Metadata = { description: 'Next.js Blank', title: 'next-blank' }
 
-export const viewport: Viewport = {
-	themeColor: '#FAFAFA',
-	colorScheme: 'light',
-	viewportFit: 'contain',
-	userScalable: false,
-	initialScale: 1,
-	maximumScale: 1,
-	minimumScale: 1,
-}
+export const viewport: Viewport = { colorScheme: 'light', initialScale: 1, maximumScale: 1, minimumScale: 1, themeColor: '#FAFAFA', userScalable: false, viewportFit: 'contain' }
 
-const RootLayout: FC<PropsExtendChildren> = ({ children }) => {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<html lang="en">
 			<body className={`${nextFont.variable}`}>{children}</body>

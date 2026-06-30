@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react'
 
-const ErrorPage = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
+import type { FC } from 'react'
+
+type ErrorPageProps = { error: Error & { digest?: string }; reset: () => void }
+
+const ErrorPage: FC<ErrorPageProps> = ({ error, reset }) => {
 	useEffect(() => {
 		console.error(error)
 	}, [error])
@@ -12,8 +16,8 @@ const ErrorPage = ({ error, reset }: { error: Error & { digest?: string }; reset
 			<h2>Something went wrong!</h2>
 			<pre>{error.message || 'An unexpected error occurred.'}</pre>
 			<button
-				type="button"
-				onClick={() => reset()}>
+				onClick={() => reset()}
+				type="button">
 				Try again
 			</button>
 		</div>

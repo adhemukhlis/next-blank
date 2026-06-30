@@ -2,17 +2,11 @@ import type { MetadataRoute } from 'next'
 
 const manifest = (): MetadataRoute.Manifest => {
 	return {
-		name: 'Next Blank',
-		short_name: 'next-blank',
-		start_url: '/',
-		id: 'next-blank',
-		theme_color: '#FAFAFA',
 		background_color: '#FAFAFA',
-		display: 'standalone',
-		scope: '/',
 		categories: ['starter'],
 		description: 'Next.js Blank',
-		orientation: 'portrait',
+		display: 'standalone',
+		id: 'next-blank',
 		// icons: [
 		// 	{
 		// 		src: '/_assets/icons/icon-192x192.png',
@@ -39,6 +33,12 @@ const manifest = (): MetadataRoute.Manifest => {
 		// 	},
 		// ],
 		lang: 'id-ID',
+		name: 'Next Blank',
+		orientation: 'portrait',
+		scope: '/',
+		short_name: 'next-blank',
+		start_url: '/',
+		theme_color: '#FAFAFA',
 	}
 }
 
