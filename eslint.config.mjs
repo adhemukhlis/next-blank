@@ -90,6 +90,7 @@ const eslintConfig = defineConfig([
 			'@typescript-eslint/restrict-plus-operands': 'error',
 			'@typescript-eslint/restrict-template-expressions': ['error', { allowAny: false, allowBoolean: true, allowNullish: true, allowNumber: true, allowRegExp: true }],
 			'@typescript-eslint/unbound-method': 'error',
+			'@typescript-eslint/array-type': ['warn', { default: 'array-simple' }],
 
 			// Universal Coding Style (Stylistic Plugin)
 			'@stylistic/arrow-parens': ['warn', 'always'],
