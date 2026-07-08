@@ -37,5 +37,7 @@ node_modules/
 .next/
 next-env.d.ts
 
-# Project spesific ignore
-*.txt
+# output command files
+/*.txt
+/*.md
+!README.md
