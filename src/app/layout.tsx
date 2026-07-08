@@ -1,4 +1,4 @@
-import { Rubik } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 import type { PropsWithChildren } from '@/types/common'
 import type { Metadata, Viewport } from 'next'
@@ -6,7 +6,7 @@ import type { FC } from 'react'
 
 import '@/styles/global.css'
 
-const nextFont = Rubik({
+const nextFont = Inter({
 	adjustFontFallback: false,
 	display: 'swap',
 	style: ['normal', 'italic'],
