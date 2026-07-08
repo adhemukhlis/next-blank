@@ -177,9 +177,13 @@ const eslintConfig = defineConfig([
 		},
 		settings: { 'import/resolver': { typescript: { project: './tsconfig.json' } } },
 	},
+	// ==========================================
+	// 3. SPELL CHECKER CONFIGURATION
+	// ==========================================
+	{ files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'], plugins: { '@cspell': cspell }, rules: { '@cspell/spellchecker': ['warn', { checkComments: false }] } },
 
 	// ==========================================
-	// 3. PROJECT-SPECIFIC CONFIGURATION
+	// 4. PROJECT-SPECIFIC CONFIGURATION
 	// ==========================================
 	// Stack-specific blocks here. When copying this eslint config to other projects,
 	// simply remove/comment this block and its corresponding import at the top.
@@ -230,11 +234,6 @@ const eslintConfig = defineConfig([
 			],
 		},
 	},
-
-	// ==========================================
-	// 4. SPELL CHECKER CONFIGURATION
-	// ==========================================
-	{ files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'], plugins: { '@cspell': cspell }, rules: { '@cspell/spellchecker': ['warn', {}] } },
 ])
 
 export default eslintConfig
