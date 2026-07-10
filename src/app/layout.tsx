@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Noto_Serif } from 'next/font/google'
 
 import type { PropsWithChildren } from '@/types/common'
 import type { Metadata, Viewport } from 'next'
@@ -6,13 +6,13 @@ import type { FC } from 'react'
 
 import '@/styles/global.css'
 
-const nextFont = Inter({
+const nextFont = Noto_Serif({
 	adjustFontFallback: false,
 	display: 'swap',
 	style: ['normal', 'italic'],
-	subsets: ['latin'],
+	subsets: ['latin'], // add 'math' to add math symbols
 	variable: '--font-family',
-	weight: ['300', '400', '500', '600', '700', '800', '900'],
+	weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = { description: 'Next.js Blank', title: 'next-blank' }
