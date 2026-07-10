@@ -1,1 +1,1 @@
-{ "$schema": "https://unpkg.com/knip@latest/schema.json", "ignoreBinaries": ["prettier", "tail"], "rules": { "classMembers": "off", "enumMembers": "off", "types": "off" } }
+{ "$schema": "https://unpkg.com/knip@latest/schema.json", "ignoreBinaries": ["tail"], "rules": { "classMembers": "off", "enumMembers": "off", "types": "off" } }
