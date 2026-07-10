@@ -1,4 +1,4 @@
-@import './common.css';
+@import "./common.css";
 
 /* ============================================================
    CSS RESET — Next.js Global Stylesheet
@@ -144,18 +144,18 @@ textarea {
 	resize: vertical;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
 }
 
-input[type='number'] {
+input[type="number"] {
 	-moz-appearance: textfield;
 	appearance: textfield;
 }
 
-input[type='search']::-webkit-search-decoration,
-input[type='search']::-webkit-search-cancel-button {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
 	-webkit-appearance: none;
 }
 
@@ -190,10 +190,10 @@ h6 {
 	hyphens: auto;
 }
 
-[role='button'],
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[role="button"],
+[type="button"],
+[type="reset"],
+[type="submit"] {
 	cursor: pointer;
 }
 

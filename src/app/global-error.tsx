@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import type { FC } from 'react'
+import { useEffect } from 'react'
 
 type GlobalErrorPageProps = { error: Error & { digest?: string }; reset: () => void }
 
@@ -16,7 +15,7 @@ const GlobalErrorPage: FC<GlobalErrorPageProps> = ({ error, reset }) => {
 			<h2>Sorry, something went wrong on our end 🥹</h2>
 			<pre>{error.message || 'An unexpected error occurred.'}</pre>
 			<button
-				onClick={() => reset()}
+				onClick={reset}
 				type="button">
 				Try again
 			</button>
