@@ -1,11 +1,12 @@
 'use client'
 
-import type { FC } from 'react'
 import { useEffect } from 'react'
+
+import type { ReactNode } from 'react'
 
 type GlobalErrorPageProps = { error: Error & { digest?: string }; reset: () => void }
 
-const GlobalErrorPage: FC<GlobalErrorPageProps> = ({ error, reset }) => {
+export default function GlobalErrorPage({ error, reset }: GlobalErrorPageProps): ReactNode {
 	useEffect(() => {
 		console.error(error)
 	}, [error])
@@ -22,5 +23,3 @@ const GlobalErrorPage: FC<GlobalErrorPageProps> = ({ error, reset }) => {
 		</div>
 	)
 }
-
-export default GlobalErrorPage

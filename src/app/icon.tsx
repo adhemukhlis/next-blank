@@ -19,8 +19,6 @@ const iconStyle: CSSProperties = {
 
 export const contentType = 'image/png'
 
-const Icon = (): ImageResponse => {
+export default function Icon(): ImageResponse {
 	return new ImageResponse(<div style={iconStyle}>B</div>, { ...size })
 }
-
-export default Icon

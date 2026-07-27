@@ -33,7 +33,3 @@ updateConfig:
 # Only allow these packages to run postinstall or build scripts
 allowBuilds:
   sharp: true
-
-overrides:
-  postcss: ^8.5.10
-

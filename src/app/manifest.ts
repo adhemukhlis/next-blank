@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const manifest = (): MetadataRoute.Manifest => {
+export default function manifest(): MetadataRoute.Manifest {
 	return {
 		background_color: '#FAFAFA',
 		categories: ['starter'],
@@ -41,5 +41,3 @@ const manifest = (): MetadataRoute.Manifest => {
 		theme_color: '#FAFAFA',
 	}
 }
-
-export default manifest

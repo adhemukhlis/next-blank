@@ -1,6 +1,6 @@
-import type { FC } from 'react'
+import type { ReactNode } from 'react'
 
-const NotFound: FC = () => {
+export default function NotFoundPage(): ReactNode {
 	return (
 		<div className="page column justify-center align-center">
 			<h2>Not Found</h2>
@@ -8,5 +8,3 @@ const NotFound: FC = () => {
 		</div>
 	)
 }
-
-export default NotFound
