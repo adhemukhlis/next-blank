@@ -1,11 +1,9 @@
-import type { FC } from 'react'
+import type { ReactNode } from 'react'
 
-const Page: FC = () => {
+export default function Page(): ReactNode {
 	return (
 		<div className="page justify-center align-center">
 			<h1>next-blank</h1>
 		</div>
 	)
 }
-
-export default Page

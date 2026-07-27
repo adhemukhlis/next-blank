@@ -1,7 +1,8 @@
-import type { Metadata, Viewport } from 'next'
 import { Noto_Serif } from 'next/font/google'
-import type { FC } from 'react'
+
 import type { PropsWithChildren } from '@/types/common'
+import type { Metadata, Viewport } from 'next'
+import type { FC, ReactNode } from 'react'
 
 import '@/styles/global.css'
 
@@ -18,12 +19,10 @@ export const metadata: Metadata = { description: 'Next.js Blank', title: 'next-b
 
 export const viewport: Viewport = { colorScheme: 'light', initialScale: 1, maximumScale: 1, minimumScale: 1, themeColor: '#FAFAFA', userScalable: false, viewportFit: 'contain' }
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+export default function Layout({ children }: PropsWithChildren): ReactNode {
 	return (
 		<html lang="en">
 			<body className={`${nextFont.variable}`}>{children}</body>
 		</html>
 	)
 }
-
-export default RootLayout

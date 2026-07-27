@@ -1,0 +1,8 @@
+node_modules
+.git
+.next
+public
+package.json
+**/*.d.ts
+pnpm-lock.yaml
+pnpm-workspace.yaml
