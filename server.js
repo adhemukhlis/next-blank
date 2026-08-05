@@ -5,7 +5,7 @@ const mode = Bun.argv[2] || 'dev'
 const commands = {
 	dev: ['next', 'dev', '-p', String(port)],
 	'dev-https': ['next', 'dev', '-p', String(port), '--experimental-https'],
-	start: ['next', 'start', '-p', String(port)]
+	start: ['next', 'start', '-p', String(port)],
 }
 
 if (!commands[mode]) {
@@ -21,4 +21,3 @@ Bun.spawn(commands[mode], {
 	stderr: 'inherit',
 	stdin: 'inherit',
 })
-
