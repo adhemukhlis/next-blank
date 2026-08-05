@@ -1,24 +1,12 @@
-const { execSync } = require('node:child_process')
-const { readFileSync, existsSync } = require('node:fs')
+const port = Bun.env.PORT || 3000
 
-const vars = {}
+const mode = Bun.argv[2] || 'dev'
 
-if (existsSync('.env')) {
-	const env = readFileSync('.env', 'utf-8')
-	env.split('\n').forEach((line) => {
-		const [key, ...rest] = line.split('=')
-		const value = rest.join('=')
-		if (key?.trim() && value?.trim()) {
-			vars[key.trim()] = value.trim()
-		}
-	})
+const commands = {
+	dev: ['next', 'dev', '-p', String(port)],
+	'dev-https': ['next', 'dev', '-p', String(port), '--experimental-https'],
+	start: ['next', 'start', '-p', String(port)]
 }
-
-const port = vars.PORT || 3000
-
-const mode = process.argv[2] || 'dev'
-
-const commands = { dev: `next dev -p ${port}`, 'dev-https': `next dev -p ${port} --experimental-https`, start: `next start -p ${port}` }
 
 if (!commands[mode]) {
 	console.error(`❌ Unknown mode: "${mode}"`)
@@ -26,6 +14,11 @@ if (!commands[mode]) {
 	process.exit(1)
 }
 
-console.info(`🚀 Running: ${commands[mode]}`)
+console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-execSync(commands[mode], { stdio: 'inherit', env: { ...process.env, ...vars } })
+Bun.spawn(commands[mode], {
+	stdout: 'inherit',
+	stderr: 'inherit',
+	stdin: 'inherit',
+})
+

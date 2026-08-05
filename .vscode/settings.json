@@ -29,7 +29,7 @@
 	"gitlens.telemetry.enabled": false,
 	"scm.alwaysShowActions": false,
 	"scm.alwaysShowRepositories": false,
-	"search.exclude": { "*.tsbuildinfo": true, "**/.next/**": true, "**/node_modules/**": true, "**/pnpm-lock.yaml": true, "next-env.d.ts": true },
+	"search.exclude": { "*.tsbuildinfo": true, "**/.next/**": true, "**/node_modules/**": true, "next-env.d.ts": true },
 	"search.searchOnTypeDebouncePeriod": 600,
 	"telemetry.editStats.details.enabled": false,
 	"telemetry.editStats.enabled": false,

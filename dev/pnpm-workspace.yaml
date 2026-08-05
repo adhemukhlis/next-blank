@@ -25,5 +25,10 @@ storeDir: ~/.pnpm-store
 # Fail the installation if a package is too new and no older version is available
 minimumReleaseAgeStrict: false
 
-minimumReleaseAgeExclude:
-  - eslint-plugin-perfectionist
+# minimumReleaseAgeExclude:
+#   - eslint-plugin-perfectionist
+
+# Auto update config
+updateConfig:
+ ignoreDependencies:
+  - typescript
