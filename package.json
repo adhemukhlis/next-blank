@@ -19,7 +19,7 @@
 	"name": "next-blank",
 	"private": true,
 	"scripts": {
-		"build": "bunx --bun next build",
+		"build": "next build",
 		"deps:reset": "rm -rf node_modules .next bun.lock && bun pm cache rm && bun install",
 		"deps:show": "bun list --depth=Infinity",
 		"deps:upgrade": "bun up --latest",
