@@ -5,21 +5,45 @@
 		"incremental": true,
 		"isolatedModules": true,
 		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
 		"module": "esnext",
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"noUncheckedSideEffectImports": true,
-		"paths": { "@/*": ["./src/*"] },
-		"plugins": [{ "name": "next" }],
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ES2022",
-		"typeRoots": ["./node_modules/@types"],
-		"types": ["node"]
+		"typeRoots": [
+			"./node_modules/@types"
+		],
+		"types": [
+			"bun"
+		]
 	},
-	"exclude": ["node_modules"],
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"]
+	"exclude": [
+		"node_modules"
+	],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts"
+	]
 }

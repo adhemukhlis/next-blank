@@ -1,0 +1,8 @@
+{
+	"functions": {
+		"app/**/*.tsx": {
+			"runtime": "bun"
+		}
+	},
+	"bunVersion": "1.x"
+}

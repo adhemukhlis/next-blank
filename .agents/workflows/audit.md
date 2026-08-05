@@ -6,14 +6,14 @@ description: Run linter, safely fix confident errors, and report risky issues.
 
 Follow these steps to run the linter and handle the reported errors safely and effectively.
 
-> [!IMPORTANT] Run `pnpm fix` immediately at the very beginning. Avoid performing any codebase analysis or formulating speculative conclusions before this command has been executed.
+> [!IMPORTANT] Run `bun fix` immediately at the very beginning. Avoid performing any codebase analysis or formulating speculative conclusions before this command has been executed.
 
 ## Step 1: Execute Linter Fix
 
 Run the linter fix command in the terminal:
 
 ```bash
-pnpm fix
+bun fix
 ```
 
 ## Step 2: Execute Linter
@@ -21,7 +21,7 @@ pnpm fix
 Run the linting command in the terminal:
 
 ```bash
-pnpm lint
+bun lint
 ```
 
 ## Step 3: Evaluate and Resolve Errors
