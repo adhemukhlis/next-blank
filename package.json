@@ -16,9 +16,6 @@
 		"@types/react-dom": "^19.2.4",
 		"typescript": "^7.0.2"
 	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
 	"name": "next-blank",
 	"private": true,
 	"scripts": {
