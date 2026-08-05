@@ -1,21 +1,23 @@
-# Dockerfile - Bun runtime and also as Package Manager
-ARG BUN_VERSION=1-slim
-FROM oven/bun:${BUN_VERSION} AS base
+# Dockerfile - Node.js runtime with PNPM as package manager
+
+ARG NODE_VERSION=24.11.0-alpine
+
+FROM node:${NODE_VERSION} AS base
+
 # =====================================================
 # Stage 1: Dependencies Installation Stage
 # =====================================================
-
 FROM base AS dependencies
 
 # Set working directory
 WORKDIR /app
 
-# Copy package-related files first to leverage Docker's caching mechanism
-COPY package.json bun.lock bunfig.toml ./
+# Copy package-related files (PNPM) first to leverage Docker's caching mechanism
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-# Install project dependencies with frozen lockfile for reproducible builds
-RUN --mount=type=cache,target=/root/.bun/install/cache \
-    bun install --no-save --frozen-lockfile
+# Install project dependencies with frozen lockfile for reproducible builds (PNPM)
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    corepack enable pnpm && pnpm install --frozen-lockfile --store-dir /pnpm/store
 
 # =====================================================
 # Stage 2: Build Next.js application in standalone mode
@@ -42,7 +44,13 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build Next.js application
-RUN bun run build
+# If you want to speed up Docker rebuilds, you can cache the build artifacts
+# by adding: --mount=type=cache,target=/app/.next/cache
+# This caches the .next/cache directory across builds, but it also prevents
+# .next/cache/fetch-cache from being included in the final image, meaning
+# cached fetch responses from the build won't be available at runtime.
+
+RUN corepack enable pnpm && pnpm build
 
 # =====================================================
 # Stage 3: Run Next.js application
@@ -63,27 +71,31 @@ ENV HOSTNAME="0.0.0.0"
 # Uncomment the following line in case you want to disable telemetry during the run time.
 ENV NEXT_TELEMETRY_DISABLED=1
 
+RUN apk add --no-cache libc6-compat && \
+    addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
 # Copy production assets
-COPY --from=builder --chown=bun:bun /app/public ./public
+COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
-RUN chown bun:bun .next
+RUN chown nextjs:nodejs .next
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=bun:bun /app/.next/standalone ./
-COPY --from=builder --chown=bun:bun /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./standalone/
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # If you want to persist the fetch cache generated during the build so that
 # cached responses are available immediately on startup, uncomment this line:
-# COPY --from=builder --chown=bun:bun /app/.next/cache ./.next/cache
+# COPY --from=builder --chown=nextjs:nodejs /app/.next/cache ./.next/cache
 
 # Switch to non-root user for security best practices
-USER bun
+USER nextjs
 
 # Expose port 3000 to allow HTTP traffic
 EXPOSE 3000
 
-# Start Next.js standalone server with Bun
-CMD ["bun", "server.js"]
+# Start Next.js standalone server
+CMD ["node", "server.js"]
