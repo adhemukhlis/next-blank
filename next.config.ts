@@ -1,14 +1,12 @@
-import { env } from 'bun'
-
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
 	cacheComponents: true,
 	compiler: {
-		...(env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] }, removeConsole: { exclude: ['error', 'warn', 'info', 'table'] } } : {}),
+		...(process.env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] }, removeConsole: { exclude: ['error', 'warn', 'info', 'table'] } } : {}),
 	},
 	experimental: { turbopackRustReactCompiler: true, useOffline: true },
-	output: env.VERCEL ? undefined : 'standalone',
+	output: process.env.VERCEL ? undefined : 'standalone',
 	pageExtensions: ['ts', 'tsx'],
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
