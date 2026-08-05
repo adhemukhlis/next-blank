@@ -26,7 +26,7 @@
 		"dev": "bun run server.js dev",
 		"fix": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
 		"format": "bun run --cwd dev format",
-		"lint": "node ./dev/lint.js --config ./dev/eslint.config.mjs .",
+		"lint": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs .",
 		"minify": "bun run --cwd dev minify",
 		"postinstall": "bun install --cwd dev",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
