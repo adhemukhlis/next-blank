@@ -5,10 +5,12 @@ const nextConfig: NextConfig = {
 	compiler: {
 		...(process.env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] }, removeConsole: { exclude: ['error', 'warn', 'info', 'table'] } } : {}),
 	},
+	experimental: { turbopackRustReactCompiler: true, useOffline: true },
 	output: 'standalone',
 	pageExtensions: ['ts', 'tsx'],
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
+	reactCompiler: true,
 	reactStrictMode: false, // I prefer to set to false to prevent double rendering.
 	trailingSlash: false,
 	turbopack: { resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'] },

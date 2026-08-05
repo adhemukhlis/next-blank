@@ -19,17 +19,11 @@ sideEffectsCache: true
 # Directory where pnpm stores all downloaded packages globally
 storeDir: ~/.pnpm-store
 
-# Only allow these packages to run postinstall or build scripts
-allowBuilds:
- sharp: true
-
 # Prevent installing packages published less than 24 hours (1440 minutes) ago (security check)
 # minimumReleaseAge: 1440
 
 # Fail the installation if a package is too new and no older version is available
-# minimumReleaseAgeStrict: true
+minimumReleaseAgeStrict: false
 
-# Auto update config
-# updateConfig:
-#  ignoreDependencies:
-#   - typescript
+minimumReleaseAgeExclude:
+  - eslint-plugin-perfectionist

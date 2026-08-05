@@ -1,3 +1,4 @@
+import path from 'node:path'
 import eslintReact from '@eslint-react/eslint-plugin'
 import jsEslint from '@eslint/js'
 // import cspell from '@cspell/eslint-plugin'
@@ -24,7 +25,7 @@ const eslintConfig = defineConfig([
 			ecmaVersion: 'latest',
 			globals: { ...globals.node },
 			parser: tsEslint.parser,
-			parserOptions: { project: './tsconfig.json', tsconfigRootDir: import.meta.dirname },
+			parserOptions: { project: './tsconfig.json', tsconfigRootDir: path.resolve(import.meta.dirname, '..') },
 			sourceType: 'module',
 		},
 		plugins: { '@stylistic': stylistic, perfectionist },
