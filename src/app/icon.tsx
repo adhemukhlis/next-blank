@@ -2,8 +2,6 @@ import { ImageResponse } from 'next/og'
 
 import type { CSSProperties } from 'react'
 
-export const runtime = 'edge'
-
 export const size = { height: 36, width: 36 }
 
 const iconStyle: CSSProperties = {

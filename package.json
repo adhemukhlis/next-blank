@@ -11,7 +11,7 @@
 		"react-dom": "^19.2.8"
 	},
 	"devDependencies": {
-		"@types/node": "^26.1.2",
+		"@types/bun": "^1.3.14",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.4",
 		"typescript": "^7.0.2"
@@ -20,23 +20,22 @@
 		"node": ">=22.0.0"
 	},
 	"name": "next-blank",
-	"packageManager": "pnpm@11.20.0+sha512.9a6f330a95b66446ea088faf1521405a8a01f07fde7124cc9958dfed52d4bb436737e65b08f85f37b46fcba375092558ac51262b816844b22f63406ed166bfee",
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"deps:reset": "rm -rf node_modules .next pnpm-lock.yaml && pnpm store prune && pnpm install",
-		"deps:show": "pnpm list --depth=Infinity",
-		"deps:upgrade": "pnpm up --latest",
-		"dev": "node server.js dev",
-		"fix": "node ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
-		"format": "pnpm --dir dev format",
+		"deps:reset": "rm -rf node_modules .next bun.lock && bun pm cache rm && bun install",
+		"deps:show": "bun list --depth=Infinity",
+		"deps:upgrade": "bun up --latest",
+		"dev": "bun run server.js dev",
+		"fix": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
+		"format": "bun run --cwd dev format",
 		"lint": "node ./dev/lint.js --config ./dev/eslint.config.mjs .",
-		"minify": "pnpm --dir dev minify",
-		"postinstall": "pnpm --dir dev install",
+		"minify": "bun run --cwd dev minify",
+		"postinstall": "bun install --cwd dev",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
-		"start": "node server.js start",
+		"start": "bun run server.js start",
 		"typecheck": "tsc --noEmit",
-		"unused": "pnpx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+		"unused": "bunx --bun knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
 	},
 	"version": "0.1.0"
 }
