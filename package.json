@@ -20,20 +20,19 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"deps:reset": "rm -rf node_modules .next bun.lock && bun pm cache rm && bun install",
-		"deps:show": "bun list --depth=Infinity",
-		"deps:upgrade": "bun up --latest",
-		"dev": "bun run server.js dev",
-		"fix": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
-		"format": "bun run --cwd dev format",
-		"lint": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs .",
-		"minify": "bun run --cwd dev minify",
-		"postinstall": "bun install --cwd dev",
+		"deps:reset": "rm -rf node_modules .next package-lock.json && npm install",
+		"deps:show": "npm ls --depth=Infinity",
+		"deps:upgrade": "npx npm-check-updates -u && npm install",
+		"dev": "node server.js dev",
+		"fix": "node ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
+		"format": "npm run --prefix dev format",
+		"lint": "node ./dev/lint.js --config ./dev/eslint.config.mjs .",
+		"minify": "npm run --prefix dev minify",
+		"postinstall": "npm install --prefix dev",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
-		"start": "bun run server.js start",
+		"start": "node server.js start",
 		"typecheck": "tsc --noEmit",
-		"unused": "bunx --bun knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+		"unused": "npx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
 	},
-	"version": "0.1.0",
-	"packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1"
+	"version": "0.1.0"
 }
