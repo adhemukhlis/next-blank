@@ -15,10 +15,10 @@
 	},
 	"name": "dev",
 	"scripts": {
-		"fix": "bunx --bun eslint --config ./eslint.config.mjs --fix",
-		"format": "bunx --bun prettier --config ../.prettierrc --ignore-path ../.prettierignore --log-level silent --write \"../**/*.{js,jsx,mjs,cjs,ts,tsx,css,scss,less,json,yml,yaml,md}\"",
-		"lint": "bunx --bun eslint --config ./eslint.config.mjs",
-		"minify": "bunx --bun prettier --config ../.minifyrc --ignore-path ../.prettierignore --log-level silent --write \"../**/*.{js,jsx,mjs,cjs,ts,tsx,css,scss,less,json,yml,yaml,md}\""
+		"fix": "npx eslint --config ./eslint.config.mjs --fix",
+		"format": "npx prettier --config ../.prettierrc --ignore-path ../.prettierignore --log-level silent --write \"../**/*.{js,jsx,mjs,cjs,ts,tsx,css,scss,less,json,yml,yaml,md}\"",
+		"lint": "npx eslint --config ./eslint.config.mjs",
+		"minify": "npx prettier --config ../.minifyrc --ignore-path ../.prettierignore --log-level silent --write \"../**/*.{js,jsx,mjs,cjs,ts,tsx,css,scss,less,json,yml,yaml,md}\""
 	},
 	"type": "module",
 	"version": "1.0.0"
