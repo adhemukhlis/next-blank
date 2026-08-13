@@ -1,4 +1,4 @@
-# Dockerfile - Node.js runtime with PNPM as package manager
+# Dockerfile - Node.js runtime with NPM as package manager
 
 ARG NODE_VERSION=24.11.0-alpine
 
@@ -12,12 +12,12 @@ FROM base AS dependencies
 # Set working directory
 WORKDIR /app
 
-# Copy package-related files (PNPM) first to leverage Docker's caching mechanism
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# Copy package-related files (NPM) first to leverage Docker's caching mechanism
+COPY package.json package-lock.json ./
 
-# Install project dependencies with frozen lockfile for reproducible builds (PNPM)
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    corepack enable pnpm && pnpm install --frozen-lockfile --store-dir /pnpm/store
+# Install project dependencies with frozen lockfile for reproducible builds (NPM)
+RUN --mount=type=cache,id=npm,target=/root/.npm \
+    npm ci --prefer-offline
 
 # =====================================================
 # Stage 2: Build Next.js application in standalone mode
@@ -44,13 +44,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build Next.js application
-# If you want to speed up Docker rebuilds, you can cache the build artifacts
-# by adding: --mount=type=cache,target=/app/.next/cache
-# This caches the .next/cache directory across builds, but it also prevents
-# .next/cache/fetch-cache from being included in the final image, meaning
-# cached fetch responses from the build won't be available at runtime.
-
-RUN corepack enable pnpm && pnpm build
+RUN npm run build
 
 # =====================================================
 # Stage 3: Run Next.js application
