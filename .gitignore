@@ -37,7 +37,7 @@ node_modules/
 .next/
 next-env.d.ts
 
-# output command files
+# output files
 /*.txt
 /*.md
 !README.md
