@@ -6,11 +6,11 @@ description: Generate and build the Dockerfile for the requested package manager
 
 Command-driven helper. Invoke it with a manager, e.g. `dockerize pnpm`, and execute exactly that. Do not detect or second-guess the manager.
 
-| Action       | Manager   | Meaning                             |
-| ------------ | --------- | ----------------------------------- |
-| `dockerize`  | `npm`     | Dockerize the project with npm      |
-| `dockerize`  | `pnpm`    | Dockerize the project with pnpm     |
-| `dockerize`  | `bun`     | Dockerize the project with bun      |
+| Action      | Manager | Meaning                         |
+| ----------- | ------- | ------------------------------- |
+| `dockerize` | `npm`   | Dockerize the project with npm  |
+| `dockerize` | `pnpm`  | Dockerize the project with pnpm |
+| `dockerize` | `bun`   | Dockerize the project with bun  |
 
 > [!IMPORTANT] Run only the requested `dockerize <manager>`. The manager is chosen by the caller — never infer, detect, or switch managers on your own. The project must already be set up with that package manager (run `package-manager.md setup <manager>` first if it is not).
 

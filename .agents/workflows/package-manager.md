@@ -6,11 +6,11 @@ description: Set up the project to use the requested package manager (npm, pnpm,
 
 Command-driven helper. Invoke it with an action and a manager, e.g. `setup pnpm`, and execute exactly that. Do not detect or second-guess the manager.
 
-| Action  | Manager          | Meaning                          |
-| ------- | ---------------- | -------------------------------- |
-| `setup` | `npm`            | Set up / switch the project to npm |
-| `setup` | `pnpm`           | Set up / switch the project to pnpm |
-| `setup` | `bun`            | Set up / switch the project to bun |
+| Action  | Manager | Meaning                             |
+| ------- | ------- | ----------------------------------- |
+| `setup` | `npm`   | Set up / switch the project to npm  |
+| `setup` | `pnpm`  | Set up / switch the project to pnpm |
+| `setup` | `bun`   | Set up / switch the project to bun  |
 
 > [!NOTE] `server.js` in this project is Bun-specific (uses `Bun.env`, `Bun.argv`, `Bun.spawn`). Setups below rewrite it to the matching runtime.
 
