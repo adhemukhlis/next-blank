@@ -1,9 +1,1 @@
-{
-	"$schema": "https://openapi.vercel.sh/vercel.json",
-	"fluid": true,
-	"framework": "nextjs",
-	"installCommand": "npm install",
-	"regions": [
-		"sin1"
-	]
-}
+{ "$schema": "https://openapi.vercel.sh/vercel.json", "fluid": true, "framework": "nextjs", "installCommand": "npm install", "regions": ["sin1"] }

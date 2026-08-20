@@ -16,8 +16,4 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-Bun.spawn(commands[mode], {
-	stdout: 'inherit',
-	stderr: 'inherit',
-	stdin: 'inherit',
-})
+Bun.spawn(commands[mode], { stdout: 'inherit', stderr: 'inherit', stdin: 'inherit' })
