@@ -31,8 +31,9 @@
 		"postinstall": "npm install --prefix dev",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
 		"start": "node server.js start",
-		"typecheck": "tsc --noEmit",
-		"unused": "npx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+		"typecheck": "next typegen && tsc --noEmit",
+		"unused": "npx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt",
+		"next:info": "next info 2>&1 | tail -n +2 > info.txt"
 	},
 	"version": "0.1.0"
 }
