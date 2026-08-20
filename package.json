@@ -26,13 +26,14 @@
 		"dev": "bun run server.js dev",
 		"fix": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
 		"format": "bun run --cwd dev format",
+		"install:dev": "bun install --cwd dev",
 		"lint": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs .",
 		"minify": "bun run --cwd dev minify",
-		"postinstall": "bun install --cwd dev",
+		"next:info": "next info 2>&1 | tail -n +2 > info.txt",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
 		"start": "bun run server.js start",
-		"typecheck": "tsc --noEmit",
-		"unused": "bunx --bun knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+		"typecheck": "next typegen && tsc --noEmit",
+		"unused": "pnpm dlx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
 	},
 	"version": "0.1.0"
 }
