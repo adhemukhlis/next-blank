@@ -10,15 +10,21 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"noUncheckedSideEffectImports": true,
-		"paths": { "@/*": ["./src/*"] },
-		"plugins": [{ "name": "next" }],
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ES2022",
 		"typeRoots": ["./node_modules/@types"],
-		"types": ["node"]
+		"types": ["bun"]
 	},
 	"exclude": ["node_modules"],
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"]

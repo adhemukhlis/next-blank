@@ -1,0 +1,680 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.9/schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"noDuplicateClasses": "on",
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							[
+								{
+									"source": ":NODE:",
+									"type": false
+								},
+								{
+									"source": ":PACKAGE_WITH_PROTOCOL:",
+									"type": false
+								},
+								{
+									"source": ":PACKAGE:",
+									"type": false
+								}
+							],
+							":BLANK_LINE:",
+							[
+								{
+									"source": ":ALIAS:",
+									"type": false
+								},
+								{
+									"source": ":PATH:",
+									"type": false
+								}
+							],
+							":BLANK_LINE:",
+							{
+								"type": true
+							}
+						],
+						"identifierOrder": "lexicographic",
+						"sortBareImports": true
+					}
+				},
+				"useSortedAttributes": "on",
+				"useSortedEnumMembers": "on",
+				"useSortedInterfaceMembers": "on",
+				"useSortedKeys": "on",
+				"useSortedPackageJson": "on",
+				"useSortedProperties": "on",
+				// "useSortedSelectionSet": "on", // GraphQL: tidak memakai GraphQL
+				"useSortedTypeFields": "on"
+			}
+		},
+		"enabled": true,
+		"includes": ["src/**/*.{ts,tsx}"]
+	},
+	"css": {
+		"formatter": {
+			"enabled": true
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**", "!**/node_modules", "!**/.git", "!**/.next", "!**/public", "!**/*.d.ts", "!**/pnpm-lock.yaml", "!**/pnpm-workspace.yaml"]
+	},
+	"formatter": {
+		"attributePosition": "multiline",
+		"bracketSpacing": true,
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 1,
+		"lineEnding": "lf",
+		"lineWidth": 180
+	},
+	"javascript": {
+		"formatter": {
+			"arrowParentheses": "always",
+			"bracketSameLine": true,
+			"jsxQuoteStyle": "double",
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
+		}
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
+	"linter": {
+		"domains": {
+			"next": "recommended",
+			"project": "recommended",
+			"react": "recommended",
+			"types": "recommended"
+		},
+		"enabled": true,
+		"includes": ["**/*.{ts,tsx}"],
+		"rules": {
+			// ═════════════════════════════════════════════════════════════════════
+			// Rule yang di-comment (`//`) menargetkan framework/library yang TIDAK
+			// dipakai project ini (Next.js 16 + React 19 + TypeScript + Bun, web-only,
+			// CSS polos, tanpa test runner). Nilai default rule tsb adalah "off",
+			// jadi meng-comment-nya tidak mengubah perilaku lint.
+			//
+			//   Vue / Svelte / Qwik / SolidJS / Astro  → framework lain, bukan React
+			//   React Native                            → project web-only
+			//   Tailwind CSS                            → pakai CSS polos (global.css)
+			//   Drizzle ORM                             → tidak pakai ORM
+			//   Playwright                              → tidak ada setup E2E
+			//   GraphQL                                 → tidak pakai GraphQL
+			//   test runner                             → belum ada test
+			//
+			// Kalau suatu saat dipakai, uncomment dan sesuaikan levelnya.
+			// ═════════════════════════════════════════════════════════════════════
+			"a11y": {
+				"noAccessKey": "off",
+				"noAmbiguousAnchorText": "off",
+				"noAriaHiddenOnFocusable": "off",
+				"noAriaUnsupportedElements": "off",
+				"noAutofocus": "off",
+				"noDistractingElements": "off",
+				"noHeaderScope": "off",
+				"noInteractiveElementToNoninteractiveRole": "off",
+				"noLabelWithoutControl": "off",
+				"noNoninteractiveElementInteractions": "off",
+				"noNoninteractiveElementToInteractiveRole": "off",
+				"noNoninteractiveTabindex": "off",
+				"noPositiveTabindex": "off",
+				"noRedundantAlt": "off",
+				"noRedundantRoles": "off",
+				"noStaticElementInteractions": "off",
+				"noSvgWithoutTitle": "off",
+				"useAltText": "off",
+				"useAnchorContent": "off",
+				"useAriaActivedescendantWithTabindex": "off",
+				"useAriaPropsForRole": "off",
+				"useAriaPropsSupportedByRole": "off",
+				"useButtonType": "off",
+				"useFocusableInteractive": "off",
+				"useGenericFontNames": "off",
+				"useHeadingContent": "off",
+				"useHtmlLang": "off",
+				"useIframeTitle": "off",
+				"useKeyWithClickEvents": "off",
+				"useKeyWithMouseEvents": "off",
+				"useMediaCaption": "off",
+				"useSemanticElements": "off",
+				"useValidAnchor": "off",
+				"useValidAriaProps": "off",
+				"useValidAriaRole": "off",
+				"useValidAriaValues": "off",
+				"useValidAutocomplete": "off",
+				"useValidLang": "off"
+			},
+			"complexity": {
+				"noAdjacentSpacesInRegex": "off",
+				"noArguments": "off",
+				"noBannedTypes": "off",
+				"noCommaOperator": "off",
+				"noDivRegex": "off",
+				"noEmptyTypeParameters": "off",
+				"noExcessiveCognitiveComplexity": "off",
+				"noExcessiveLinesPerFunction": "off",
+				// "noExcessiveNestedTestSuites": "off", // test runner: belum ada test runner di project
+				"noExtraBooleanCast": "warn",
+				"noFlatMapIdentity": "off",
+				"noForEach": "off",
+				"noImplicitCoercions": "off",
+				"noImportantStyles": "off",
+				"noRedundantDefaultExport": "off",
+				"noStaticOnlyClass": "off",
+				"noThisInStatic": "off",
+				"noUselessCatch": "off",
+				"noUselessCatchBinding": "off",
+				"noUselessConstructor": "off",
+				"noUselessContinue": "off",
+				"noUselessEmptyExport": "off",
+				"noUselessEscapeInRegex": "off",
+				"noUselessFragments": "off",
+				"noUselessLabel": "off",
+				"noUselessLoneBlockStatements": "off",
+				"noUselessRename": "warn",
+				"noUselessReturn": "off",
+				"noUselessStringConcat": "off",
+				"noUselessStringRaw": "off",
+				"noUselessSwitchCase": "off",
+				"noUselessTernary": "off",
+				"noUselessThisAlias": "off",
+				"noUselessTypeConstraint": "off",
+				"noUselessUndefined": "off",
+				"noUselessUndefinedInitialization": "off",
+				"noVoid": "off",
+				"useArrayFind": "off",
+				"useArrowFunction": "off",
+				"useDateNow": "off",
+				"useFlatMap": "off",
+				"useIndexOf": "off",
+				"useLiteralKeys": "off",
+				"useMaxParams": "off",
+				"useNumericLiterals": "off",
+				"useOptionalChain": "warn",
+				"useRegexLiterals": "off",
+				"useSimpleNumberKeys": "off",
+				"useSimplifiedLogicExpression": "off",
+				"useWhile": "off"
+			},
+			"correctness": {
+				"noBeforeInteractiveScriptOutsideDocument": "off",
+				"noChildrenProp": "off",
+				"noConstantCondition": "off",
+				"noConstantMathMinMaxClamp": "off",
+				"noConstAssign": "off",
+				"noConstructorReturn": "off",
+				"noDuplicateArgumentNames": "off",
+				"noDuplicateAttributes": "off",
+				"noDuplicateEnumValueNames": "off",
+				// "noDuplicateInputFieldNames": "off", // GraphQL: tidak memakai GraphQL
+				"noDuplicateVariableNames": "off",
+				"noEmptyCharacterClassInRegex": "off",
+				"noEmptyPattern": "off",
+				"noGlobalDirnameFilename": "off",
+				"noGlobalObjectCalls": "off",
+				"noInnerDeclarations": "off",
+				"noInvalidBuiltinInstantiation": "off",
+				"noInvalidConstructorSuper": "off",
+				"noInvalidDirectionInLinearGradient": "off",
+				"noInvalidGridAreas": "off",
+				"noInvalidPositionAtImportRule": "off",
+				"noInvalidUseBeforeDeclaration": "off",
+				"noMissingVarFunction": "off",
+				"noNestedComponentDefinitions": "off",
+				"noNextAsyncClientComponent": "off",
+				"noNodejsModules": "off",
+				"noNonoctalDecimalEscape": "off",
+				"noPrecisionLoss": "off",
+				"noPrivateImports": "off",
+				"noProcessGlobal": "off",
+				// "noQwikUseVisibleTask": "off", // Qwik: tidak memakai Qwik
+				"noReactPropAssignments": "off",
+				"noRenderReturnValue": "off",
+				"noRestrictedElements": "off",
+				"noSelfAssign": "off",
+				"noSetterReturn": "off",
+				// "noSolidDestructuredProps": "off", // Solid: tidak memakai SolidJS
+				"noStringCaseMismatch": "off",
+				"noSwitchDeclarations": "off",
+				"noUndeclaredDependencies": "off",
+				"noUndeclaredVariables": "off",
+				"noUnknownFunction": "off",
+				"noUnknownMediaFeatureName": "off",
+				"noUnknownProperty": "off",
+				"noUnknownPseudoClass": "off",
+				"noUnknownPseudoElement": "off",
+				"noUnknownTypeSelector": "off",
+				"noUnknownUnit": "off",
+				"noUnmatchableAnbSelector": "off",
+				"noUnreachable": "off",
+				"noUnreachableSuper": "off",
+				"noUnresolvedImports": "off",
+				"noUnsafeFinally": "off",
+				"noUnsafeOptionalChaining": "off",
+				"noUnusedFunctionParameters": "off",
+				"noUnusedImports": "error",
+				"noUnusedInstantiation": "off",
+				"noUnusedLabels": "off",
+				"noUnusedPrivateClassMembers": "off",
+				"noUnusedVariables": {
+					"level": "error",
+					"options": {
+						"ignoreRestSiblings": true
+					}
+				},
+				"noVoidElementsWithChildren": "off",
+				"noVoidTypeReturn": "off",
+				// "noVueDataObjectDeclaration": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueDuplicateKeys": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueReservedKeys": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueReservedProps": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueSetupPropsReactivityLoss": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueVIfWithVFor": "off", // Vue: tidak ada kode Vue di project ini
+				"useExhaustiveDependencies": "off",
+				// "useGraphqlNamedOperations": "off", // GraphQL: tidak memakai GraphQL
+				"useHookAtTopLevel": "off",
+				"useImageSize": "off",
+				"useImportExtensions": "off",
+				"useInlineScriptId": "off",
+				"useIsNan": "off",
+				"useJsonImportAttributes": "off",
+				"useJsxKeyInIterable": "error",
+				// "useLoneAnonymousOperation": "off", // GraphQL: tidak memakai GraphQL
+				"useParseIntRadix": "off",
+				// "useQwikClasslist": "off", // Qwik: tidak memakai Qwik
+				// "useQwikMethodUsage": "off", // Qwik: tidak memakai Qwik
+				// "useQwikValidLexicalScope": "off", // Qwik: tidak memakai Qwik
+				"useSingleJsDocAsterisk": "off",
+				"useUniqueElementIds": "off",
+				"useValidForDirection": "off",
+				"useValidTypeof": "off",
+				// "useVueValidTemplateRoot": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVBind": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVCloak": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVElse": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVElseIf": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVHtml": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVIf": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVOn": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVOnce": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVPre": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVText": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueVForKey": "off", // Vue: tidak ada kode Vue di project ini
+				"useYield": "off"
+			},
+			"nursery": {
+				"noBaseToString": "off",
+				"noComponentHookFactories": "off",
+				// "noConditionalExpect": "off", // test runner: belum ada test runner di project
+				// "noDrizzleDeleteWithoutWhere": "off", // Drizzle ORM: tidak memakai Drizzle/ORM apapun
+				// "noDrizzleUpdateWithoutWhere": "off", // Drizzle ORM: tidak memakai Drizzle/ORM apapun
+				// "noDuplicateFieldDefinitionNames": "off", // GraphQL: tidak memakai GraphQL
+				"noDuplicateSelectors": "off",
+				"noEmptyObjectKeys": "off",
+				"noExcessiveNestedCallbacks": "off",
+				"noExcessiveSelectorClasses": "off",
+				"noExtendNative": "off",
+				"noFloatingPromises": "off",
+				// "noIdenticalTestTitle": "off", // test runner: belum ada test runner di project
+				"noImpliedEval": "off",
+				"noInlineStyles": "off",
+				"noInvalidPropertyInitValue": "off",
+				"noJsRestrictedProperties": "off",
+				"noJsxLeakedDollar": "off",
+				"noJsxNamespace": "off",
+				"noLoopFunc": "off",
+				"noMisleadingReturnType": "off",
+				"noMisusedPromises": "off",
+				"noNegationInEqualityCheck": "off",
+				"noNonScalableViewport": "off",
+				// "noPlaywrightElementHandle": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightEval": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightForceOption": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightMissingAwait": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightNetworkidle": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightPagePause": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightUselessAwait": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightWaitForNavigation": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightWaitForSelector": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noPlaywrightWaitForTimeout": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "noReactNativeDeepImports": "off", // React Native: tidak memakai React Native (web-only Next.js)
+				// "noReactNativeLiteralColors": "off", // React Native: tidak memakai React Native (web-only Next.js)
+				// "noReactNativeRawText": "off", // React Native: tidak memakai React Native (web-only Next.js)
+				"noReactStringRefs": "off",
+				"noRestrictedDependencies": "off",
+				// "noSvelteLegacyConst": "off", // Svelte: tidak memakai Svelte
+				// "noSvelteUnnecessaryStateWrap": "off", // Svelte: tidak memakai Svelte
+				// "noTailwindArbitraryValue": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
+				"noTopLevelLiterals": "off",
+				"noUndeclaredClasses": "off",
+				"noUnnecessaryTemplateExpression": "off",
+				"noUnsafePlusOperands": "off",
+				"noUnsafeTypeAssertion": "off",
+				"noUntrustedLicenses": "off",
+				"noUnusedClasses": "off",
+				"noUselessTypeConversion": "off",
+				// "noVueImportCompilerMacros": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueRefAsOperand": "off", // Vue: tidak ada kode Vue di project ini
+				// "noVueVOnNumberValues": "off", // Vue: tidak ada kode Vue di project ini
+				"useArraySome": "off",
+				// "useAstroClientOnlyDirectiveValue": "off", // Astro: tidak memakai Astro
+				"useAwaitThenable": "off",
+				"useBaseline": "off",
+				// "useConsistentTestIt": "off", // test runner: belum ada test runner di project
+				"useControlLabel": "off",
+				"useDisposables": "off",
+				"useDomNodeTextContent": "off",
+				"useDomQuerySelector": "off",
+				"useExhaustiveSwitchCases": "off",
+				// "useExpect": "off", // test runner: belum ada test runner di project
+				"useExplicitReturnType": "off",
+				"useExplicitType": "off",
+				"useIframeSandbox": "off",
+				"useImportsFirst": "off",
+				"useIncludes": "off",
+				"useMathMinMax": "off",
+				"useNamedCaptureGroup": "off",
+				"useNamedLayer": "off",
+				"useNullishCoalescing": "off",
+				// "usePlaywrightValidDescribeCallback": "off", // Playwright: tidak ada setup E2E (Playwright)
+				// "useQwikLoaderLocation": "off", // Qwik: tidak memakai Qwik
+				"useReactAsyncServerFunction": "off",
+				"useReactCompiler": "off",
+				"useReactFunctionComponentDefinition": "off",
+				// "useReactNativePlatformComponents": "off", // React Native: tidak memakai React Native (web-only Next.js)
+				"useReduceTypeParameter": "off",
+				"useRegexpExec": "off",
+				"useRegexpTest": "off",
+				// "useScopedStyles": "off", // Svelte: tidak memakai Svelte
+				// "useSortedClasses": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
+				"useStringStartsEndsWith": "off",
+				// "useSvelteRequireEachKey": "off", // Svelte: tidak memakai Svelte
+				// "useTailwindShorthandClasses": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
+				// "useTestHooksInOrder": "off", // test runner: belum ada test runner di project
+				// "useTestHooksOnTop": "off", // test runner: belum ada test runner di project
+				"useThisInClassMethods": "off",
+				"useUnicodeRegex": "off",
+				"useVarsOnTop": "off"
+				// "useVueConsistentDefinePropsDeclaration": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueNextTickPromise": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueValidVFor": "off", // Vue: tidak ada kode Vue di project ini
+			},
+			"performance": {
+				"noAccumulatingSpread": "off",
+				"noAwaitInLoops": "off",
+				"noBarrelFile": "off",
+				"noDelete": "off",
+				"noDynamicNamespaceImportAccess": "off",
+				"noImgElement": "off",
+				"noJsxPropsBind": "off",
+				"noNamespaceImport": "off",
+				"noReExportAll": "off",
+				"noSyncScripts": "off",
+				"noUnwantedPolyfillio": "off",
+				"useGoogleFontPreconnect": "off",
+				// "useSolidForComponent": "off", // Solid: tidak memakai SolidJS
+				"useTopLevelRegex": "off",
+				"useVueVapor": "off"
+			},
+			"security": {
+				"noBlankTarget": "off",
+				"noDangerouslySetInnerHtml": "warn",
+				"noDangerouslySetInnerHtmlWithChildren": "off",
+				"noGlobalEval": "error",
+				"noScriptUrl": "off",
+				"noSecrets": "off"
+			},
+			"style": {
+				"noCommonJs": "off",
+				"noContinue": "off",
+				"noDefaultExport": "off",
+				"noDescendingSpecificity": "off",
+				// "noDoneCallback": "off", // test runner: belum ada test runner di project
+				"noEnum": "off",
+				"noExcessiveClassesPerFile": "off",
+				"noExcessiveLinesPerFile": "off",
+				"noExportedImports": "off",
+				"noHeadElement": "off",
+				"noHexColors": "off",
+				"noImplicitBoolean": "off",
+				"noIncrementDecrement": "off",
+				"noInferrableTypes": "off",
+				"noJsxLiterals": "off",
+				"noMagicNumbers": "off",
+				"noMultiAssign": "off",
+				"noMultilineString": "off",
+				"noNamespace": "off",
+				"noNegationElse": "off",
+				"noNestedTernary": "off",
+				"noNonNullAssertion": "warn",
+				"noParameterAssign": "off",
+				"noParameterProperties": "off",
+				"noProcessEnv": "off",
+				"noRestrictedGlobals": "off",
+				"noRestrictedImports": "off",
+				"noRestrictedTypes": "off",
+				"noRootType": "off",
+				"noShoutyConstants": "off",
+				"noSubstr": "off",
+				"noTernary": "off",
+				"noUnusedTemplateLiteral": "off",
+				"noUselessElse": "off",
+				"noValueAtRule": "off",
+				// "noVueOptionsApi": "off", // Vue: tidak ada kode Vue di project ini
+				"noYodaExpression": "off",
+				"useArrayLiterals": "off",
+				"useAsConstAssertion": "off",
+				"useAtIndex": "off",
+				"useBlockStatements": "error",
+				"useCollapsedElseIf": "off",
+				"useCollapsedIf": "off",
+				"useComponentExportOnlyModules": "off",
+				"useConsistentArrayType": {
+					"level": "warn",
+					"options": {
+						"syntax": "shorthand"
+					}
+				},
+				"useConsistentArrowReturn": "off",
+				"useConsistentBuiltinInstantiation": "off",
+				"useConsistentCurlyBraces": "off",
+				"useConsistentEnumValueType": "off",
+				// "useConsistentGraphqlDescriptions": "off", // GraphQL: tidak memakai GraphQL
+				"useConsistentMemberAccessibility": "off",
+				"useConsistentMethodSignatures": "off",
+				"useConsistentObjectDefinitions": "off",
+				"useConsistentTypeDefinitions": "off",
+				"useConst": "error",
+				"useDefaultParameterLast": "off",
+				"useDefaultSwitchClause": "off",
+				"useDeprecatedReason": "off",
+				"useDestructuring": "off",
+				"useEnumInitializers": "off",
+				"useErrorCause": "off",
+				"useExplicitLengthCheck": "off",
+				"useExponentiationOperator": "off",
+				"useExportsLast": "off",
+				"useExportType": "off",
+				"useFilenamingConvention": "off",
+				"useForOf": "off",
+				"useFragmentSyntax": "off",
+				"useGlobalThis": "off",
+				// "useGraphqlNamingConvention": "off", // GraphQL: tidak memakai GraphQL
+				"useGroupedAccessorPairs": "off",
+				"useImportType": "warn",
+				"useInputName": "off",
+				"useLiteralEnumMembers": "off",
+				// "useLoneExecutableDefinition": "off", // GraphQL: tidak memakai GraphQL
+				"useNamingConvention": "off",
+				"useNodeAssertStrict": "off",
+				"useNodejsImportProtocol": "off",
+				"useNumberNamespace": "off",
+				"useNumericSeparators": "off",
+				"useObjectSpread": "off",
+				"useReactFunctionComponents": "off",
+				"useReadonlyClassProperties": "off",
+				"useSelfClosingElements": "warn",
+				"useShorthandAssign": "warn",
+				"useShorthandFunctionType": "off",
+				"useSingleVarDeclarator": "off",
+				"useSpreadOverApply": "off",
+				"useSymbolDescription": "off",
+				"useTemplate": "warn",
+				"useThrowNewError": "off",
+				"useThrowOnlyError": "off",
+				"useTrimStartEnd": "off",
+				"useUnifiedTypeSignatures": "off"
+				// "useVueConsistentVBindStyle": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueConsistentVOnStyle": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueDefineMacrosOrder": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueHyphenatedAttributes": "off", // Vue: tidak ada kode Vue di project ini
+				// "useVueMultiWordComponentNames": "off", // Vue: tidak ada kode Vue di project ini
+			},
+			"suspicious": {
+				"noAlert": "off",
+				"noApproximativeNumericConstant": "off",
+				"noArrayIndexKey": "warn",
+				"noAssignInExpressions": "off",
+				"noAsyncPromiseExecutor": "off",
+				"noBiomeFirstException": "off",
+				"noBitwiseOperators": "off",
+				"noCatchAssign": "off",
+				"noClassAssign": "off",
+				"noCommentText": "off",
+				"noCompareNegZero": "off",
+				"noConfusingLabels": "off",
+				"noConfusingVoidType": "off",
+				"noConsole": {
+					"level": "warn",
+					"options": {
+						"allow": ["warn", "error", "info", "table"]
+					}
+				},
+				"noConstantBinaryExpressions": "off",
+				"noConstEnum": "off",
+				"noControlCharactersInRegex": "off",
+				"noDebugger": "error",
+				"noDeprecatedImports": "off",
+				"noDeprecatedMediaType": "off",
+				"noDocumentCookie": "off",
+				"noDocumentImportInPage": "off",
+				"noDoubleEquals": "warn",
+				"noDuplicateAtImportRules": "off",
+				"noDuplicateCase": "off",
+				"noDuplicateClassMembers": "off",
+				"noDuplicateCustomProperties": "off",
+				"noDuplicateDependencies": "off",
+				"noDuplicatedSpreadProps": "off",
+				"noDuplicateElseIf": "off",
+				"noDuplicateEnumValues": "off",
+				"noDuplicateFields": "off",
+				"noDuplicateFontNames": "off",
+				// "noDuplicateGraphqlOperationName": "off", // GraphQL: tidak memakai GraphQL
+				"noDuplicateJsxProps": "off",
+				"noDuplicateObjectKeys": "off",
+				"noDuplicateParameters": "off",
+				"noDuplicateProperties": "off",
+				"noDuplicateSelectorsKeyframeBlock": "off",
+				// "noDuplicateTestHooks": "off", // test runner: belum ada test runner di project
+				"noEmptyBlock": "off",
+				"noEmptyBlockStatements": "off",
+				"noEmptyInterface": "off",
+				"noEmptySource": "off",
+				"noEqualsToNull": "off",
+				"noEvolvingTypes": "off",
+				"noExplicitAny": "warn",
+				// "noExportsInTest": "off", // test runner: belum ada test runner di project
+				"noExtraNonNullAssertion": "off",
+				"noFallthroughSwitchClause": "off",
+				// "noFocusedTests": "off", // test runner: belum ada test runner di project
+				"noForIn": "off",
+				"noFunctionAssign": "off",
+				"noGlobalAssign": "off",
+				"noGlobalIsFinite": "off",
+				"noGlobalIsNan": "off",
+				"noHeadImportInDocument": "off",
+				"noImplicitAnyLet": "off",
+				"noImportantInKeyframe": "off",
+				"noImportAssign": "off",
+				"noImportCycles": "off",
+				"noIrregularWhitespace": "off",
+				"noLabelVar": "off",
+				"noLeakedRender": "off",
+				"noMisleadingCharacterClass": "off",
+				"noMisleadingInstantiator": "off",
+				"noMisplacedAssertion": "off",
+				"noMisrefactoredShorthandAssign": "off",
+				"noNestedPromises": "off",
+				"noNonNullAssertedOptionalChain": "off",
+				"noOctalEscape": "off",
+				"noParametersOnlyUsedInRecursion": "off",
+				"noProto": "off",
+				"noPrototypeBuiltins": "off",
+				"noQuickfixBiome": "off",
+				"noReactForwardRef": "off",
+				"noReactSpecificProps": "off",
+				"noRedeclare": "off",
+				"noRedundantUseStrict": "off",
+				"noReturnAssign": "off",
+				"noSelfCompare": "error",
+				"noShadow": "off",
+				"noShadowRestrictedNames": "off",
+				"noShorthandPropertyOverrides": "off",
+				// "noSkippedTests": "off", // test runner: belum ada test runner di project
+				"noSparseArray": "off",
+				"noSuspiciousSemicolonInJsx": "off",
+				"noTemplateCurlyInString": "off",
+				"noThenProperty": "off",
+				"noTsIgnore": "off",
+				"noUnassignedVariables": "off",
+				"noUndeclaredEnvVars": "off",
+				"noUnknownAtRules": "off",
+				"noUnknownAttribute": "off",
+				"noUnnecessaryConditions": "off",
+				"noUnsafeDeclarationMerging": "off",
+				"noUnsafeNegation": "off",
+				"noUnusedExpressions": "off",
+				"noUselessEscapeInString": "off",
+				"noUselessRegexBackrefs": "off",
+				"noVar": "error",
+				// "noVueArrowFuncInWatch": "off", // Vue: tidak ada kode Vue di project ini
+				"noWith": "off",
+				"useAdjacentOverloadSignatures": "off",
+				"useArraySortCompare": "off",
+				"useAwait": "off",
+				"useBiomeIgnoreFolder": "off",
+				"useDefaultSwitchClauseLast": "off",
+				"useDeprecatedDate": "off",
+				"useErrorMessage": "off",
+				"useGetterReturn": "off",
+				"useGoogleFontDisplay": "off",
+				"useGuardForIn": "off",
+				"useIsArray": "off",
+				"useIterableCallbackReturn": "off",
+				"useNamespaceKeyword": "off",
+				"useNumberToFixedDigitsArgument": "off",
+				"useRequiredScripts": "off",
+				"useStaticResponseMethods": "off",
+				"useStrictMode": "off"
+			}
+		}
+	},
+	"vcs": {
+		"clientKind": "git",
+		"enabled": true,
+		"useIgnoreFile": true
+	}
+}
