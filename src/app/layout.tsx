@@ -1,8 +1,8 @@
 import { Noto_Serif } from 'next/font/google'
 
-import type { PropsWithChildren } from '@/types/common'
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
+import type { PropsWithChildren } from '@/types/common'
 
 import '@/styles/global.css'
 
