@@ -10,14 +10,8 @@
 		"moduleResolution": "bundler",
 		"noEmit": true,
 		"noUncheckedSideEffectImports": true,
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
+		"paths": { "@/*": ["./src/*"] },
+		"plugins": [{ "name": "next" }],
 		"resolveJsonModule": true,
 		"rootDir": ".",
 		"skipLibCheck": true,
