@@ -1,10 +1,10 @@
 import { Noto_Serif } from 'next/font/google'
 
-import type { PropsWithChildren } from '@/types/common'
+import '@/styles/global.css'
+
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-
-import '@/styles/global.css'
+import type { PropsWithChildren } from '@/types/common'
 
 const nextFont = Noto_Serif({
 	adjustFontFallback: false,
