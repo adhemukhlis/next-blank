@@ -53,11 +53,20 @@
 			}
 		},
 		"enabled": true,
-		"includes": ["src/**/*.{ts,tsx}"]
+		"includes": [
+			"src/**/*.{ts,tsx}"
+		]
 	},
 	"css": {
 		"formatter": {
-			"enabled": true
+			"delimiterSpacing": false,
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 1,
+			"lineEnding": "lf",
+			"lineWidth": 180,
+			"quoteStyle": "single",
+			"trailingNewline": true
 		},
 		"linter": {
 			"enabled": true
@@ -65,41 +74,81 @@
 	},
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!**/node_modules", "!**/.git", "!**/.next", "!**/public", "!**/*.d.ts", "!**/pnpm-lock.yaml", "!**/pnpm-workspace.yaml"]
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/.git",
+			"!**/.next",
+			"!**/public",
+			"!**/*.d.ts",
+			"!**/package-lock.json",
+			"!**/pnpm-lock.yaml",
+			"!**/pnpm-workspace.yaml"
+		]
 	},
 	"formatter": {
 		"attributePosition": "multiline",
+		"bracketSameLine": true,
 		"bracketSpacing": true,
+		"delimiterSpacing": false,
 		"enabled": true,
+		"expand": "never",
 		"indentStyle": "tab",
 		"indentWidth": 1,
 		"lineEnding": "lf",
-		"lineWidth": 180
+		"lineWidth": 180,
+		"trailingNewline": true
 	},
 	"javascript": {
 		"formatter": {
 			"arrowParentheses": "always",
+			"attributePosition": "multiline",
 			"bracketSameLine": true,
+			"bracketSpacing": true,
+			"delimiterSpacing": false,
+			"enabled": true,
+			"expand": "auto",
+			"indentStyle": "tab",
+			"indentWidth": 1,
 			"jsxQuoteStyle": "double",
+			"lineEnding": "lf",
+			"lineWidth": 180,
+			"operatorLinebreak": "after",
+			"quoteProperties": "asNeeded",
 			"quoteStyle": "single",
 			"semicolons": "asNeeded",
-			"trailingCommas": "all"
+			"trailingCommas": "all",
+			"trailingNewline": true
+		},
+		"linter": {
+			"enabled": true
 		}
 	},
 	"json": {
 		"formatter": {
-			"trailingCommas": "none"
+			"bracketSpacing": true,
+			"delimiterSpacing": false,
+			"enabled": true,
+			"expand": "always",
+			"indentStyle": "tab",
+			"indentWidth": 1,
+			"lineEnding": "lf",
+			"lineWidth": 180,
+			"trailingCommas": "none",
+			"trailingNewline": true
 		}
 	},
 	"linter": {
 		"domains": {
-			"next": "recommended",
-			"project": "recommended",
-			"react": "recommended",
-			"types": "recommended"
+			"next": "all",
+			"project": "all",
+			"react": "all",
+			"types": "all"
 		},
 		"enabled": true,
-		"includes": ["**/*.{ts,tsx}"],
+		"includes": [
+			"**/*.{ts,tsx}"
+		],
 		"rules": {
 			// ═════════════════════════════════════════════════════════════════════
 			// Rule yang di-comment (`//`) menargetkan framework/library yang TIDAK
@@ -212,9 +261,9 @@
 			"correctness": {
 				"noBeforeInteractiveScriptOutsideDocument": "off",
 				"noChildrenProp": "off",
+				"noConstAssign": "off",
 				"noConstantCondition": "off",
 				"noConstantMathMinMaxClamp": "off",
-				"noConstAssign": "off",
 				"noConstructorReturn": "off",
 				"noDuplicateArgumentNames": "off",
 				"noDuplicateAttributes": "off",
@@ -399,7 +448,7 @@
 				"useRegexpExec": "off",
 				"useRegexpTest": "off",
 				// "useScopedStyles": "off", // Svelte: tidak memakai Svelte
-				// "useSortedClasses": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
+				"useSortedClasses": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
 				"useStringStartsEndsWith": "off",
 				// "useSvelteRequireEachKey": "off", // Svelte: tidak memakai Svelte
 				// "useTailwindShorthandClasses": "off", // Tailwind CSS: tidak memakai Tailwind (CSS polos/global.css)
@@ -560,7 +609,12 @@
 				"noConsole": {
 					"level": "warn",
 					"options": {
-						"allow": ["warn", "error", "info", "table"]
+						"allow": [
+							"warn",
+							"error",
+							"info",
+							"table"
+						]
 					}
 				},
 				"noConstantBinaryExpressions": "off",
@@ -607,8 +661,8 @@
 				"noGlobalIsNan": "off",
 				"noHeadImportInDocument": "off",
 				"noImplicitAnyLet": "off",
-				"noImportantInKeyframe": "off",
 				"noImportAssign": "off",
+				"noImportantInKeyframe": "off",
 				"noImportCycles": "off",
 				"noIrregularWhitespace": "off",
 				"noLabelVar": "off",
