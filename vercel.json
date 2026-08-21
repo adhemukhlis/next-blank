@@ -1,1 +1,10 @@
-{ "$schema": "https://openapi.vercel.sh/vercel.json", "fluid": true, "framework": "nextjs", "installCommand": "bun install", "regions": ["sin1"] }
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"bunVersion": "1.x",
+	"fluid": true,
+	"framework": "nextjs",
+	"installCommand": "bun install",
+	"regions": [
+		"sin1"
+	]
+}

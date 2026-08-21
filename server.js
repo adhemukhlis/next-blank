@@ -1,10 +1,6 @@
-#!/usr/bin/env node
+const port = Bun.env.PORT || 3000
 
-import { spawn } from 'node:child_process'
-
-const port = process.env.PORT || 3000
-
-const mode = process.argv[2] || 'dev'
+const mode = Bun.argv[2] || 'dev'
 
 const commands = {
 	dev: ['next', 'dev', '-p', String(port)],
@@ -20,6 +16,4 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-const child = spawn(commands[mode][0], commands[mode].slice(1), { stdio: 'inherit', env: process.env })
-
-child.on('exit', (code) => process.exit(code ?? 0))
+Bun.spawn(commands[mode], { stdout: 'inherit', stderr: 'inherit', stdin: 'inherit' })
