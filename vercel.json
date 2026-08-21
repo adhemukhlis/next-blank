@@ -3,5 +3,7 @@
 	"fluid": true,
 	"framework": "nextjs",
 	"installCommand": "bun install",
-	"regions": ["sin1"]
+	"regions": [
+		"sin1"
+	]
 }
