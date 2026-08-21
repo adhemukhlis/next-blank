@@ -1,0 +1,26 @@
+# Automatically install missing peer dependencies
+autoInstallPeers: true
+
+# Deduplicate packages that share peer dependencies to reduce size
+dedupePeerDependents: true
+
+# Enforce Node.js and package manager version requirements
+engineStrict: true
+
+# Delay installation of newly published packages to reduce supply chain attack risk (minutes, 0 = disabled)
+minimumReleaseAge: 0
+
+# Fail resolution if no version meets the age requirement (true = strict, false = fallback)
+minimumReleaseAgeStrict: false
+
+# Link files from the global store to save disk space
+packageImportMethod: hardlink
+
+# Only install what is in the lockfile to ensure reproducible builds
+preferFrozenLockfile: true
+
+# Cache compilation/build steps of packages to speed up future installs
+sideEffectsCache: true
+
+# Directory where pnpm stores all downloaded packages globally
+storeDir: ~/.pnpm-store
