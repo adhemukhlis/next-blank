@@ -2,8 +2,20 @@
 	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
 	"version": "0.2",
 	"language": "en,id",
-	"import": ["@cspell/dict-id-id/cspell-ext.json"],
-	"dictionaries": ["id-id"],
-	"words": ["dicebear", "innerhtml", "turbopack"],
-	"ignorePaths": ["node_modules/**", ".next/**", "pnpm-lock.yaml"]
+	"import": [
+		"@cspell/dict-id-id/cspell-ext.json"
+	],
+	"dictionaries": [
+		"id-id"
+	],
+	"words": [
+		"dicebear",
+		"innerhtml",
+		"turbopack"
+	],
+	"ignorePaths": [
+		"node_modules/**",
+		".next/**",
+		"pnpm-lock.yaml"
+	]
 }

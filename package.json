@@ -6,12 +6,13 @@
 		"baseline widely available"
 	],
 	"dependencies": {
-		"next": "^16.3.0",
+		"next": "^16.3.1",
 		"react": "^19.2.8",
 		"react-dom": "^19.2.8"
 	},
 	"devDependencies": {
-		"@types/bun": "^1.3.14",
+		"@biomejs/biome": "^2.5.9",
+		"@types/bun": "^1.4.0",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.2.4",
 		"typescript": "^7.0.2"
@@ -20,20 +21,18 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"deps:reset": "rm -rf node_modules .next bun.lock && bun pm cache rm && bun install",
-		"deps:show": "bun list --depth=Infinity",
-		"deps:upgrade": "bun up --latest",
-		"dev": "bun run server.js dev",
-		"fix": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs --fix .",
-		"format": "bun run --cwd dev format",
-		"install:dev": "bun install --cwd dev",
-		"lint": "bun run ./dev/lint.js --config ./dev/eslint.config.mjs .",
-		"minify": "bun run --cwd dev minify",
+		"deps:reset": "rm -rf node_modules .next bun.lock && bun install",
+		"deps:show": "bun pm ls --depth=Infinity",
+		"deps:upgrade": "bunx npm-check-updates -u && bun install",
+		"dev": "bun server.js dev",
+		"fix": "biome check --fix .",
+		"format": "biome format --write .",
+		"lint": "biome check .",
 		"next:info": "next info 2>&1 | tail -n +2 > info.txt",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
-		"start": "bun run server.js start",
+		"start": "bun server.js start",
 		"typecheck": "next typegen && tsc --noEmit",
-		"unused": "pnpm dlx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+		"unused": "bunx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
 	},
 	"version": "0.1.0"
 }
