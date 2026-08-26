@@ -20,6 +20,6 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-const child = spawn(commands[mode][0], commands[mode].slice(1), { stdio: 'inherit', env: process.env })
+const child = spawn(commands[mode][0], commands[mode].slice(1), { env: process.env, stdio: 'inherit' })
 
 child.on('exit', (code) => process.exit(code ?? 0))
