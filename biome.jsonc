@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.5.9/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
 	"assist": {
 		"actions": {
 			"source": {
@@ -54,7 +54,8 @@
 		},
 		"enabled": true,
 		"includes": [
-			"src/**/*.{ts,tsx}"
+			"src/**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs,json,css}",
+			"**/*.{json,md,js,mjs,cjs}"
 		]
 	},
 	"css": {
@@ -726,6 +727,20 @@
 			}
 		}
 	},
+	"overrides": [
+		{
+			"assist": {
+				"actions": {
+					"source": {
+						"useSortedKeys": "off"
+					}
+				}
+			},
+			"includes": [
+				"package.json"
+			]
+		}
+	],
 	"vcs": {
 		"clientKind": "git",
 		"enabled": true,

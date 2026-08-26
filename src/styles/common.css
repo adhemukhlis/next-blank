@@ -8,8 +8,8 @@
 
 .page {
 	display: flex;
-	overflow-x: auto;
 	flex: 1;
+	overflow-x: auto;
 }
 
 .justify-center {
