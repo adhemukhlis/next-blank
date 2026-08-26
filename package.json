@@ -1,4 +1,22 @@
 {
+	"name": "next-blank",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"build": "next build",
+		"deps:reset": "rm -rf node_modules .next pnpm-lock.yaml && pnpm install",
+		"deps:show": "pnpm ls --depth=Infinity",
+		"deps:upgrade": "pnpm update --latest && pnpm install",
+		"dev": "node server.js dev",
+		"fix": "biome check --fix .",
+		"format": "biome format --write .",
+		"lint": "biome check .",
+		"next:info": "next info 2>&1 | tail -n +2 > info.txt",
+		"size": "du -k -d 1 . | sort -nr > size.txt",
+		"start": "node server.js start",
+		"typecheck": "next typegen && tsc --noEmit",
+		"unused": "pnpm dlx knip --no-exit-code 2>&1 | tail -n +2 > knip-report.txt"
+	},
 	"browserslist": [
 		"> 0.5% in ID",
 		"not dead",
@@ -14,7 +32,7 @@
 		"@biomejs/biome": "^2.5.9",
 		"@types/node": "^24.0.0",
 		"@types/react": "^19.2.18",
-		"@types/react-dom": "^19.2.4",
+		"@types/react-dom": "^19.2.5",
 		"typescript": "^7.0.2"
 	},
 	"name": "next-blank",
