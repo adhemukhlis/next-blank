@@ -1,6 +1,10 @@
-const port = Bun.env.PORT || 3000
+#!/usr/bin/env node
 
-const mode = Bun.argv[2] || 'dev'
+const { spawn } = require('node:child_process')
+
+const port = process.env.PORT || 3000
+
+const mode = process.argv[2] || 'dev'
 
 const commands = {
 	dev: ['next', 'dev', '-p', String(port)],
