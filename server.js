@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { spawn } from 'node:child_process'
+const { spawn } = require('node:child_process')
 
 const port = process.env.PORT || 3000
 
