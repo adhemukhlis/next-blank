@@ -33,7 +33,7 @@
 			"./node_modules/@types"
 		],
 		"types": [
-			"node"
+			"bun"
 		]
 	},
 	"exclude": [
