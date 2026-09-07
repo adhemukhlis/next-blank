@@ -23,4 +23,4 @@ preferFrozenLockfile: true
 sideEffectsCache: true
 
 # Directory where pnpm stores all downloaded packages globally
-storeDir: ~/.pnpm-store
+storeDir: ${HOME}/.pnpm-store
