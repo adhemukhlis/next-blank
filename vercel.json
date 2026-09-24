@@ -3,7 +3,7 @@
 	"bunVersion": "1.x",
 	"fluid": true,
 	"framework": "nextjs",
-	"installCommand": "pnpm install",
+	"installCommand": "bun install",
 	"regions": [
 		"sin1"
 	]
