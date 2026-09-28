@@ -3,9 +3,9 @@ const port = Bun.env.PORT || 3000
 const mode = Bun.argv[2] || 'dev'
 
 const commands = {
-	dev: ['next', 'dev', '-p', String(port)],
-	'dev-https': ['next', 'dev', '-p', String(port), '--experimental-https'],
-	start: ['next', 'start', '-p', String(port)],
+	dev: ['bun', '--bun', 'next', 'dev', '-p', String(port)],
+	'dev-https': ['bun', '--bun', 'next', 'dev', '-p', String(port), '--experimental-https'],
+	start: ['bun', '--bun', 'next', 'start', '-p', String(port)],
 }
 
 if (!commands[mode]) {

@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "next build",
+		"build": "bun --bun next build",
 		"deps:reset": "rm -rf node_modules .next bun.lock && bun install",
 		"deps:show": "bun pm ls --depth=Infinity",
 		"deps:upgrade": "bunx npm-check-updates -u && bun install",
