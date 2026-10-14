@@ -4,12 +4,19 @@ import { useEffect } from 'react'
 
 import type { ReactNode } from 'react'
 
-type GlobalErrorPageProps = { error: Error & { digest?: string }; reset: () => void }
+type GlobalErrorPageProps = {
+	error: Error & {
+		digest?: string
+	}
+	reset: () => void
+}
 
 export default function GlobalErrorPage({ error, reset }: GlobalErrorPageProps): ReactNode {
 	useEffect(() => {
 		console.error(error)
-	}, [error])
+	}, [
+		error,
+	])
 
 	return (
 		<div className="page column justify-center align-center">

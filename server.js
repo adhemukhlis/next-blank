@@ -7,9 +7,25 @@ const port = process.env.PORT || 3000
 const mode = process.argv[2] || 'dev'
 
 const commands = {
-	dev: ['next', 'dev', '-p', String(port)],
-	'dev-https': ['next', 'dev', '-p', String(port), '--experimental-https'],
-	start: ['next', 'start', '-p', String(port)],
+	dev: [
+		'next',
+		'dev',
+		'-p',
+		String(port),
+	],
+	'dev-https': [
+		'next',
+		'dev',
+		'-p',
+		String(port),
+		'--experimental-https',
+	],
+	start: [
+		'next',
+		'start',
+		'-p',
+		String(port),
+	],
 }
 
 if (!commands[mode]) {
@@ -20,6 +36,9 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-const child = spawn(commands[mode][0], commands[mode].slice(1), { env: process.env, stdio: 'inherit' })
+const child = spawn(commands[mode][0], commands[mode].slice(1), {
+	env: process.env,
+	stdio: 'inherit',
+})
 
 child.on('exit', (code) => process.exit(code ?? 0))

@@ -2,7 +2,10 @@ import { ImageResponse } from 'next/og'
 
 import type { CSSProperties } from 'react'
 
-export const size = { height: 36, width: 36 }
+export const size = {
+	height: 36,
+	width: 36,
+}
 
 const iconStyle: CSSProperties = {
 	alignItems: 'center',
@@ -18,5 +21,7 @@ const iconStyle: CSSProperties = {
 export const contentType = 'image/png'
 
 export default function Icon(): ImageResponse {
-	return new ImageResponse(<div style={iconStyle}>B</div>, { ...size })
+	return new ImageResponse(<div style={iconStyle}>B</div>, {
+		...size,
+	})
 }
