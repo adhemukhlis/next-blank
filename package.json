@@ -6,11 +6,12 @@
 		"build": "bun --bun next build",
 		"deps:reset": "rm -rf node_modules .next bun.lock && bun install",
 		"deps:show": "bun pm ls --depth=Infinity",
-		"deps:upgrade": "bunx npm-check-updates -u && bun install",
+		"deps:upgrade": "bun update --latest",
 		"dev": "bun server.js dev",
 		"fix": "biome check --fix .",
 		"format": "biome format --write .",
 		"lint": "biome check .",
+		"maintain-loop": "rm -rf node_modules/ .next/ bun.lock && bun install && bun update --latest && bun dedupe && bun prune &&  bun pm cache rm && bun typecheck && bun fix",
 		"next:info": "next info 2>&1 | tail -n +2 > info.txt",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
 		"start": "bun server.js start",
@@ -24,13 +25,13 @@
 		"baseline widely available"
 	],
 	"dependencies": {
-		"next": "^16.3.8",
+		"next": "^16.4.0",
 		"react": "^19.3.0",
 		"react-dom": "^19.3.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.15",
-		"@types/bun": "^1.4.2",
+		"@types/bun": "^1.4.3",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
 		"typescript": "^7.0.2"

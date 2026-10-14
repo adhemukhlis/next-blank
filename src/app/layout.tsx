@@ -9,15 +9,36 @@ import type { PropsWithChildren } from '@/types/common'
 const nextFont = Noto_Serif({
 	adjustFontFallback: false,
 	display: 'swap',
-	style: ['normal', 'italic'],
-	subsets: ['latin'], // add 'math' to add math symbols
+	style: [
+		'normal',
+		'italic',
+	],
+	subsets: [
+		'latin',
+	], // add 'math' to add math symbols
 	variable: '--font-family',
-	weight: ['400', '500', '600', '700'],
+	weight: [
+		'400',
+		'500',
+		'600',
+		'700',
+	],
 })
 
-export const metadata: Metadata = { description: 'Next.js Blank', title: 'next-blank' }
+export const metadata: Metadata = {
+	description: 'Next.js Blank',
+	title: 'next-blank',
+}
 
-export const viewport: Viewport = { colorScheme: 'light', initialScale: 1, maximumScale: 1, minimumScale: 1, themeColor: '#FAFAFA', userScalable: false, viewportFit: 'contain' }
+export const viewport: Viewport = {
+	colorScheme: 'light',
+	initialScale: 1,
+	maximumScale: 1,
+	minimumScale: 1,
+	themeColor: '#FAFAFA',
+	userScalable: false,
+	viewportFit: 'contain',
+}
 
 export default function Layout({ children }: PropsWithChildren): ReactNode {
 	return (

@@ -3,9 +3,25 @@ const port = Bun.env.PORT || 3000
 const mode = Bun.argv[2] || 'dev'
 
 const commands = {
-	dev: ['next', 'dev', '-p', String(port)],
-	'dev-https': ['next', 'dev', '-p', String(port), '--experimental-https'],
-	start: ['next', 'start', '-p', String(port)],
+	dev: [
+		'next',
+		'dev',
+		'-p',
+		String(port),
+	],
+	'dev-https': [
+		'next',
+		'dev',
+		'-p',
+		String(port),
+		'--experimental-https',
+	],
+	start: [
+		'next',
+		'start',
+		'-p',
+		String(port),
+	],
 }
 
 if (!commands[mode]) {
@@ -16,4 +32,8 @@ if (!commands[mode]) {
 
 console.info(`🚀 Running: ${commands[mode].join(' ')}`)
 
-Bun.spawn(commands[mode], { stderr: 'inherit', stdin: 'inherit', stdout: 'inherit' })
+Bun.spawn(commands[mode], {
+	stderr: 'inherit',
+	stdin: 'inherit',
+	stdout: 'inherit',
+})

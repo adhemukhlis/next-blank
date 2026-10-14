@@ -3,7 +3,9 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
 	return {
 		background_color: '#FAFAFA',
-		categories: ['starter'],
+		categories: [
+			'starter',
+		],
 		description: 'Next.js Blank',
 		display: 'standalone',
 		id: 'next-blank',
