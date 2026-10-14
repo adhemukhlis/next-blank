@@ -4,19 +4,55 @@ const nextConfig: NextConfig = {
 	cacheComponents: true,
 	partialPrefetching: true,
 	compiler: {
-		...(process.env.NODE_ENV === 'production' ? { reactRemoveProperties: { properties: ['^data-testid$'] }, removeConsole: { exclude: ['error', 'warn', 'info', 'table'] } } : {}),
+		...(process.env.NODE_ENV === 'production'
+			? {
+					reactRemoveProperties: {
+						properties: [
+							'^data-testid$',
+						],
+					},
+					removeConsole: {
+						exclude: [
+							'error',
+							'warn',
+							'info',
+							'table',
+						],
+					},
+				}
+			: {}),
 	},
-	experimental: { turbopackRustReactCompiler: true, useOffline: true },
+	experimental: {
+		turbopackRustReactCompiler: true,
+		useOffline: true,
+		turbopackPluginRuntimeStrategy: 'workerThreads',
+	},
 	output: process.env.VERCEL ? undefined : 'standalone',
-	pageExtensions: ['ts', 'tsx'],
+	pageExtensions: [
+		'ts',
+		'tsx',
+	],
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	reactCompiler: true,
 	reactStrictMode: false, // I prefer to set to false to prevent double rendering.
 	trailingSlash: false,
-	turbopack: { resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'] },
+	turbopack: {
+		resolveExtensions: [
+			'.mdx',
+			'.tsx',
+			'.ts',
+			'.jsx',
+			'.js',
+			'.mjs',
+			'.json',
+		],
+	},
 	typedRoutes: true,
-	typescript: { ignoreBuildErrors: true, tsconfigPath: 'tsconfig.json' },
+	typescript: {
+		ignoreBuildErrors: true,
+		tsconfigPath: 'tsconfig.json',
+	},
 	// images: {
 	// 	remotePatterns: [
 	// 		{
