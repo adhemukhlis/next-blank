@@ -11,7 +11,7 @@
 		"fix": "biome check --fix .",
 		"format": "biome format --write .",
 		"lint": "biome check .",
-		"maintain-loop": "corepack use pnpm@latest && rm -rf node_modules/ .next/ pnpm-lock.yaml && pnpm install && pnpm update -r --latest && pnpm dedupe && pnpm prune && pnpm store prune && pnpm typecheck && pnpm fix",
+		"maintain-loop": "rm -rf node_modules/ .next/ package-lock.json && npm install",
 		"next:info": "next info 2>&1 | tail -n +2 > info.txt",
 		"size": "du -k -d 1 . | sort -nr > size.txt",
 		"start": "node server.js start",
