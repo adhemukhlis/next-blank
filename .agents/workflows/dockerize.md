@@ -1,6 +1,6 @@
 ---
-description: Generate and build the Dockerfile for the requested package manager (npm, pnpm, bun).
----
+
+## description: Generate and build the Dockerfile for the requested package manager (npm, pnpm, bun).
 
 # Dockerize Workflow
 
