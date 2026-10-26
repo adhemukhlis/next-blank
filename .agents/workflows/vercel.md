@@ -1,6 +1,6 @@
 ---
-description: Generate the Vercel deploy config (vercel.json) for the requested package manager (npm, pnpm, bun).
----
+
+## description: Generate the Vercel deploy config (vercel.json) for the requested package manager (npm, pnpm, bun).
 
 # Vercel Workflow
 

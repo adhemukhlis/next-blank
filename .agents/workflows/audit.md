@@ -1,6 +1,6 @@
 ---
-description: Run linter, safely fix confident errors, and report risky issues.
----
+
+## description: Run linter, safely fix confident errors, and report risky issues.
 
 # Audit Workflow
 
