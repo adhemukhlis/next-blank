@@ -1,6 +1,6 @@
 ---
-description: Set up the project to use the requested package manager (npm, pnpm, bun).
----
+
+## description: Set up the project to use the requested package manager (npm, pnpm, bun).
 
 # Package Manager Workflow
 
