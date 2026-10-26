@@ -1,6 +1,6 @@
 ---
-trigger: always_on
----
+
+## trigger: always_on
 
 # Coding Style
 
